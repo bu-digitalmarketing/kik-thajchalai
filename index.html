@@ -334,6 +334,26 @@ footer{border-top:2px dotted var(--line);padding-block:24px calc(30px + env(safe
 .origin .to{font-family:var(--round);font-weight:800;font-size:22px;color:var(--ink)}
 .origin .why{font-size:13.5px;color:var(--muted);line-height:1.7;flex:1 1 220px}
 
+
+/* ══ running cat ══ */
+.runner{
+  position:relative;width:100vw;margin-inline:calc(50% - 50vw);
+  height:126px;overflow:hidden;background:var(--panel-2);
+  border-block:2px dotted var(--line);
+}
+.runner .ground{position:absolute;left:0;right:0;bottom:26px;border-top:2px dotted var(--line)}
+.dash-cat{position:absolute;bottom:14px;left:-200px;width:170px;height:auto;animation:dash 8s linear infinite}
+@keyframes dash{from{transform:translateX(0)}to{transform:translateX(calc(100vw + 400px))}}
+.dash-cat .body-g{transform-box:fill-box;transform-origin:50% 100%;animation:bob .28s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3.5px)}}
+.dash-cat .leg{transform-box:fill-box;transform-origin:50% 0%;animation:step .28s ease-in-out infinite}
+@keyframes step{0%,100%{transform:rotate(26deg)}50%{transform:rotate(-26deg)}}
+.dash-cat .lg2,.dash-cat .lg3{animation-delay:.14s}
+.dash-cat .rtail{transform-box:fill-box;transform-origin:92% 88%;animation:rtail .56s ease-in-out infinite}
+@keyframes rtail{0%,100%{transform:rotate(-9deg)}50%{transform:rotate(9deg)}}
+.dash-cat .speed{animation:speed .28s linear infinite;opacity:.45}
+@keyframes speed{0%{opacity:.5}100%{opacity:.15}}
+
 @media (max-width:900px){
   .hero-in{grid-template-columns:1fr;gap:40px}
   .vrail{display:none}
@@ -361,6 +381,7 @@ footer{border-top:2px dotted var(--line);padding-block:24px calc(30px + env(safe
   *{animation:none!important;transition:none!important}
   html{scroll-behavior:auto}
   .eyes-open{opacity:0}
+  .dash-cat{left:50%;transform:translateX(-50%)}
 }
 </style>
 </head>
@@ -394,9 +415,9 @@ footer{border-top:2px dotted var(--line);padding-block:24px calc(30px + env(safe
       <div class="wordmark">som<em>vfx</em>cat</div>
       <div class="jpname">ミング<span class="en">MING</span></div>
       <div class="role mono">Orange &amp; White Cat · オレンジと白のねこ</div>
-      <p class="lede t-ja">ミングは画面の前にすわって、<b>生のプレートを最終ショットに</b>変えるねこ。だれにも、さわられたと気づかれません。</p>
-      <p class="lede t-en">Ming sits in front of a screen and turns <b>raw plates into finished shots</b> — nobody can tell they were ever touched.</p>
-        <p class="lede t-th">หมิงนั่งอยู่หน้าจอ แล้วเปลี่ยน<b>เพลตดิบให้กลายเป็นช็อตสุดท้าย</b> ที่ไม่มีใครดูออกว่าถูกแตะมาก่อน</p>
+      <p class="lede t-ja">画面の前にすわって、<b>生のプレートを最終ショットに</b>。だれにも気づかれません。</p>
+      <p class="lede t-en">Ming turns <b>raw plates into finished shots</b> nobody can tell were touched.</p>
+        <p class="lede t-th">หมิงเปลี่ยน<b>เพลตดิบให้เป็นช็อตสุดท้าย</b> ที่ไม่มีใครดูออกว่าถูกแตะ</p>
       <div class="cta">
         <a class="btn btn-a" href="#contact">
           <span class="t-ja">ショットを相談する</span><span class="t-en">Start a shot</span><span class="t-th">เริ่มคุยงาน</span>
@@ -549,65 +570,89 @@ footer{border-top:2px dotted var(--line);padding-block:24px calc(30px + env(safe
     <div class="head">
       <h2><span class="t-ja">ミングができること</span><span class="t-en">What Ming does</span><span class="t-th">สิ่งที่หมิงทำ</span></h2>
       <div class="h-sub"><span class="t-ja">Service</span><span class="t-en">できること</span><span class="t-th">บริการ</span></div>
-      <p class="sub t-ja">ショット単位でも、シーケンス単位でも、いそがしい時期のチーム参加でも。やりとりはフレーム番号で、納品は EXR / DPX で。</p>
-      <p class="sub t-en">Per shot, per sequence, or dropping into your team through a crunch. Notes in frame numbers, files as EXR or DPX.</p>
-        <p class="sub t-th">รับเป็นช็อต เป็นซีเควนซ์ หรือเข้าเสริมทีมช่วงงานแน่น คุยงานด้วยเลขเฟรม ส่งไฟล์เป็น EXR หรือ DPX</p>
+      <p class="sub t-ja">ショット単位でも、シーケンスでも、チーム参加でも。納品は EXR / DPX。</p>
+      <p class="sub t-en">Per shot, per sequence, or joining your team. Delivered as EXR or DPX.</p>
+        <p class="sub t-th">รับเป็นช็อต เป็นซีเควนซ์ หรือเข้าเสริมทีม ส่งเป็น EXR หรือ DPX</p>
     </div>
     <div class="cards">
       <div class="card">
         <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="13" height="13" rx="3"/><rect x="8" y="8" width="13" height="13" rx="3"/></svg></div>
         <h3><span class="t-ja">コンポジット</span><span class="t-en">Compositing</span><span class="t-th">คอมโพสิต</span></h3>
         <div class="h-sub"><span class="t-ja">Compositing</span><span class="t-en">コンポジット</span><span class="t-th">คอมโพสิต</span></div>
-        <p class="t-ja">プレート・CG・エフェクトをひとつの光にまとめます。エッジ、グレイン、黒レベルを整えて、つなぎ目を消します。</p>
-        <p class="t-en">Plates, CG and effects brought under one light. Edges, grain and black levels handled so the join disappears.</p>
-        <p class="t-th">รวมเพลต CG และเอฟเฟกต์ให้อยู่ใต้แสงเดียวกัน คุมขอบ เกรน และระดับดำ จนรอยต่อหายไป</p>
+        <p class="t-ja">プレート・CG・エフェクトをひとつの光に。つなぎ目を消します。</p>
+        <p class="t-en">Plates, CG and effects under one light. The join disappears.</p>
+        <p class="t-th">รวมเพลต CG และเอฟเฟกต์ใต้แสงเดียวกัน จนรอยต่อหายไป</p>
         <div class="tags"><span>Nuke</span><span>After Effects</span><span>Fusion</span></div>
       </div>
       <div class="card">
         <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 20s2-8 8-12 8-4 8-4-1 5-4 9-8 7-12 7z"/><path d="M4 20l4-4"/></svg></div>
         <h3><span class="t-ja">ロト &amp; ペイント</span><span class="t-en">Roto &amp; Paint</span><span class="t-th">โรโต้ &amp; เพ้นท์</span></h3>
         <div class="h-sub"><span class="t-ja">Roto &amp; Paint</span><span class="t-en">ロト＆ペイント</span><span class="t-th">โรโต้ &amp; เพ้นท์</span></div>
-        <p class="t-ja">髪・煙・速い動きのマット抜き。ワイヤーやマーカーなど、映ってはいけないものを消します。</p>
-        <p class="t-en">Mattes for hair, smoke and fast motion. Rigs, markers and anything that shouldn't be in frame painted out.</p>
-        <p class="t-th">ตัดแมตต์เส้นผม ควัน และการเคลื่อนไหวเร็ว ลบสลิง มาร์กเกอร์ และของที่ไม่ควรอยู่ในเฟรม</p>
+        <p class="t-ja">髪・煙・速い動きのマット抜き。映ってはいけないものを消します。</p>
+        <p class="t-en">Mattes for hair, smoke and fast motion. Rigs and markers painted out.</p>
+        <p class="t-th">ตัดแมตต์เส้นผม ควัน และการเคลื่อนไหวเร็ว ลบสลิงและมาร์กเกอร์</p>
         <div class="tags"><span>Silhouette</span><span>Mocha</span><span>Nuke</span></div>
       </div>
       <div class="card">
         <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="2"/></svg></div>
         <h3><span class="t-ja">マッチムーブ</span><span class="t-en">Matchmove</span><span class="t-th">แมตช์มูฟ</span></h3>
         <div class="h-sub"><span class="t-ja">Matchmove &amp; Tracking</span><span class="t-en">マッチムーブ＆トラッキング</span><span class="t-th">แมตช์มูฟ &amp; แทร็กกิ้ง</span></div>
-        <p class="t-ja">カメラをソルブして、CG を実際の地面に固定します。参照シーンもつけるので、3D チームがその日のうちに引き継げます。</p>
-        <p class="t-en">Camera solved, CG stuck to real ground. You get the solve plus a reference scene the 3D team can pick up the same day.</p>
-        <p class="t-th">solve กล้องให้ CG ติดพื้นจริง ส่งกล้องพร้อมฉากอ้างอิง ให้ทีม 3D รับช่วงต่อได้ในวันเดียวกัน</p>
+        <p class="t-ja">カメラをソルブして、CG を地面に固定。参照シーンつきで渡します。</p>
+        <p class="t-en">Camera solved, CG stuck to real ground. Handed over with a reference scene.</p>
+        <p class="t-th">solve กล้องให้ CG ติดพื้นจริง ส่งพร้อมฉากอ้างอิง</p>
         <div class="tags"><span>3DEqualizer</span><span>SynthEyes</span><span>Maya</span></div>
       </div>
       <div class="card">
         <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2z"/></svg></div>
         <h3><span class="t-ja">クリーンアップ</span><span class="t-en">Cleanup &amp; Beauty</span><span class="t-th">คลีนอัพ &amp; บิวตี้</span></h3>
         <div class="h-sub"><span class="t-ja">Cleanup &amp; Beauty</span><span class="t-en">クリーンアップ＆ビューティー</span><span class="t-th">คลีนอัพ &amp; บิวตี้</span></div>
-        <p class="t-ja">肌や背景を整えつつ、本来の質感は残します。プラスチックのようにはしません。</p>
-        <p class="t-en">Skin and backgrounds tidied while the real texture stays. Nothing turns to plastic.</p>
-        <p class="t-th">เก็บผิวและฉากหลังให้สะอาด โดยยังเหลือพื้นผิวจริงไว้ ไม่ทำให้ภาพกลายเป็นพลาสติก</p>
+        <p class="t-ja">肌や背景を整えつつ、質感は残します。</p>
+        <p class="t-en">Skin and backgrounds tidied. The texture stays.</p>
+        <p class="t-th">เก็บผิวและฉากหลังให้สะอาด แต่ยังเหลือพื้นผิวจริง</p>
         <div class="tags"><span>Nuke</span><span>Mistika</span><span>DaVinci</span></div>
       </div>
     </div>
   </section>
 
-  <div class="divider" aria-hidden="true">
-    <svg viewBox="0 0 24 24"><ellipse cx="6.3" cy="9" rx="2.5" ry="3.3"/><ellipse cx="11" cy="6.4" rx="2.5" ry="3.4"/><ellipse cx="16" cy="7.4" rx="2.4" ry="3.2"/><ellipse cx="19.6" cy="11.4" rx="2.2" ry="2.8"/><path d="M12.6 12c3.4 0 6.2 2.6 6.2 5.4 0 2.2-1.9 3.4-4 3.4-1.2 0-1.6-.5-2.9-.5s-1.7.5-2.9.5c-2.1 0-4-1.2-4-3.4C5 14.6 9.2 12 12.6 12z"/></svg>
-    <svg viewBox="0 0 24 24"><ellipse cx="6.3" cy="9" rx="2.5" ry="3.3"/><ellipse cx="11" cy="6.4" rx="2.5" ry="3.4"/><ellipse cx="16" cy="7.4" rx="2.4" ry="3.2"/><ellipse cx="19.6" cy="11.4" rx="2.2" ry="2.8"/><path d="M12.6 12c3.4 0 6.2 2.6 6.2 5.4 0 2.2-1.9 3.4-4 3.4-1.2 0-1.6-.5-2.9-.5s-1.7.5-2.9.5c-2.1 0-4-1.2-4-3.4C5 14.6 9.2 12 12.6 12z"/></svg>
-    <svg viewBox="0 0 24 24"><ellipse cx="6.3" cy="9" rx="2.5" ry="3.3"/><ellipse cx="11" cy="6.4" rx="2.5" ry="3.4"/><ellipse cx="16" cy="7.4" rx="2.4" ry="3.2"/><ellipse cx="19.6" cy="11.4" rx="2.2" ry="2.8"/><path d="M12.6 12c3.4 0 6.2 2.6 6.2 5.4 0 2.2-1.9 3.4-4 3.4-1.2 0-1.6-.5-2.9-.5s-1.7.5-2.9.5c-2.1 0-4-1.2-4-3.4C5 14.6 9.2 12 12.6 12z"/></svg>
-    <svg viewBox="0 0 24 24"><ellipse cx="6.3" cy="9" rx="2.5" ry="3.3"/><ellipse cx="11" cy="6.4" rx="2.5" ry="3.4"/><ellipse cx="16" cy="7.4" rx="2.4" ry="3.2"/><ellipse cx="19.6" cy="11.4" rx="2.2" ry="2.8"/><path d="M12.6 12c3.4 0 6.2 2.6 6.2 5.4 0 2.2-1.9 3.4-4 3.4-1.2 0-1.6-.5-2.9-.5s-1.7.5-2.9.5c-2.1 0-4-1.2-4-3.4C5 14.6 9.2 12 12.6 12z"/></svg>
-    <svg viewBox="0 0 24 24"><ellipse cx="6.3" cy="9" rx="2.5" ry="3.3"/><ellipse cx="11" cy="6.4" rx="2.5" ry="3.4"/><ellipse cx="16" cy="7.4" rx="2.4" ry="3.2"/><ellipse cx="19.6" cy="11.4" rx="2.2" ry="2.8"/><path d="M12.6 12c3.4 0 6.2 2.6 6.2 5.4 0 2.2-1.9 3.4-4 3.4-1.2 0-1.6-.5-2.9-.5s-1.7.5-2.9.5c-2.1 0-4-1.2-4-3.4C5 14.6 9.2 12 12.6 12z"/></svg>
+  <div class="runner" aria-hidden="true">
+    <span class="ground"></span>
+    <svg class="dash-cat" viewBox="0 0 176 104" xmlns="http://www.w3.org/2000/svg">
+      <g class="speed" stroke="#F79A46" stroke-width="3" stroke-linecap="round" fill="none">
+        <path d="M2 40 H20"/><path d="M0 54 H14"/><path d="M4 68 H18"/>
+      </g>
+      <g class="rtail"><path d="M38 48 C 22 46 12 34 16 20" stroke="#F79A46" stroke-width="9" stroke-linecap="round" fill="none"/></g>
+      <g class="leg lg1"><path d="M56 58 L56 84" stroke="#DD7C31" stroke-width="8" stroke-linecap="round" fill="none"/><ellipse cx="56" cy="86" rx="6.5" ry="4.5" fill="#FFFFFF"/></g>
+      <g class="leg lg2"><path d="M104 58 L104 84" stroke="#DD7C31" stroke-width="8" stroke-linecap="round" fill="none"/><ellipse cx="104" cy="86" rx="6.5" ry="4.5" fill="#FFFFFF"/></g>
+      <g class="body-g">
+        <ellipse cx="74" cy="52" rx="40" ry="21" fill="#F79A46"/>
+        <path d="M46 62 C 58 71 96 71 106 61 C 94 68 56 68 46 62 Z" fill="#FFFFFF"/>
+        <path d="M58 36 C 62 33 66 33 69 36 M76 34 C 80 31 84 31 87 34 M94 36 C 98 33 102 33 105 36"
+              stroke="#E07B2C" stroke-width="4.5" stroke-linecap="round" fill="none" opacity=".55"/>
+        <path d="M114 28 L112 8 L130 21 Z" fill="#F79A46"/>
+        <path d="M117 27 L116 14 L127 22 Z" fill="#F7B7C0"/>
+        <circle cx="128" cy="43" r="21" fill="#F79A46"/>
+        <ellipse cx="139" cy="51" rx="14" ry="10" fill="#FFFFFF"/>
+        <path d="M120 39 C 123 34 129 34 132 39" stroke="#5A4232" stroke-width="3.6" stroke-linecap="round" fill="none"/>
+        <ellipse cx="149" cy="48" rx="4.5" ry="3.4" fill="#FF9AA8"/>
+        <g stroke="#E8D6C2" stroke-width="2.2" stroke-linecap="round" fill="none" opacity=".85">
+          <path d="M150 54 C 160 56 166 58 171 61"/><path d="M150 45 C 160 43 166 41 171 39"/>
+        </g>
+        <path d="M108 34 C 111 46 115 54 119 59" stroke="#E0483D" stroke-width="6.5" stroke-linecap="round" fill="none"/>
+        <circle cx="120" cy="64" r="6" fill="#DCE2E8"/>
+        <path d="M115 65 H125" stroke="#7E8B96" stroke-width="1.6" fill="none"/>
+      </g>
+      <g class="leg lg3"><path d="M46 58 L46 84" stroke="#F79A46" stroke-width="8" stroke-linecap="round" fill="none"/><ellipse cx="46" cy="86" rx="6.5" ry="4.5" fill="#FFFFFF"/></g>
+      <g class="leg lg4"><path d="M94 58 L94 84" stroke="#F79A46" stroke-width="8" stroke-linecap="round" fill="none"/><ellipse cx="94" cy="86" rx="6.5" ry="4.5" fill="#FFFFFF"/></g>
+    </svg>
   </div>
 
   <section id="work">
     <div class="head">
       <h2><span class="t-ja">おしごと</span><span class="t-en">Selected work</span><span class="t-th">ผลงานที่เลือกมา</span></h2>
       <div class="h-sub"><span class="t-ja">Selected work</span><span class="t-en">おしごと</span><span class="t-th">ผลงาน</span></div>
-      <p class="sub t-ja">進め方が一番つたわる 4 ショット。下の画像はまだ仮のスレートなので、実際のスチルにいつでも差し替えられます。</p>
-      <p class="sub t-en">Four shots that explain the working method best. Frames below are placeholder slates — swap in real stills any time.</p>
-        <p class="sub t-th">สี่ช็อตที่เล่าวิธีทำงานได้ครบที่สุด ภาพด้านล่างยังเป็นสเลทเปล่า เปลี่ยนเป็นภาพจริงได้ตลอด</p>
+      <p class="sub t-ja">進め方が一番つたわる 4 ショット。画像はまだ仮です。</p>
+      <p class="sub t-en">Four shots that explain the method best. Images are still placeholders.</p>
+        <p class="sub t-th">สี่ช็อตที่เล่าวิธีทำงานได้ดีที่สุด ภาพยังเป็นตัวอย่าง</p>
     </div>
     <div class="shots">
       <article class="shot">
@@ -667,22 +712,22 @@ footer{border-top:2px dotted var(--line);padding-block:24px calc(30px + env(safe
     <div class="head">
       <h2><span class="t-ja">しごとのながれ</span><span class="t-en">Pipeline</span><span class="t-th">ขั้นตอนงาน</span></h2>
       <div class="h-sub"><span class="t-ja">Pipeline</span><span class="t-en">しごとのながれ</span><span class="t-th">ขั้นตอนงาน</span></div>
-      <p class="sub t-ja">どのショットも同じ 6 ステップを通ります。ステップ 2 から確認できるので、最後まで待つ必要はありません。</p>
-      <p class="sub t-en">Every shot walks the same six steps. You see work from step two — no waiting until the end.</p>
-        <p class="sub t-th">ทุกช็อตเดินผ่านหกขั้นเหมือนกันหมด เห็นงานได้ตั้งแต่ขั้นที่สอง ไม่ต้องรอจนจบ</p>
+      <p class="sub t-ja">同じ 6 ステップ。ステップ 2 から確認できます。</p>
+      <p class="sub t-en">The same six steps. You see work from step two.</p>
+        <p class="sub t-th">หกขั้นเหมือนกันหมด เห็นงานตั้งแต่ขั้นที่สอง</p>
     </div>
     <div class="pipe">
-      <div class="step"><div class="no mono">1</div><b>PLATE</b><div class="s-sub"><span class="t-ja">プレート受領</span><span class="t-en">Plate in</span><span class="t-th">รับเพลต</span></div><span class="d"><span class="t-ja">素材を受け取り、メタデータとカラースペースを確認。</span><span class="t-en">Footage in, metadata and colorspace checked.</span><span class="t-th">รับฟุตเทจ เช็กเมทาดาต้าและคัลเลอร์สเปซ</span></span></div>
+      <div class="step"><div class="no mono">1</div><b>PLATE</b><div class="s-sub"><span class="t-ja">プレート受領</span><span class="t-en">Plate in</span><span class="t-th">รับเพลต</span></div><span class="d"><span class="t-ja">メタデータとカラースペースを確認。</span><span class="t-en">Metadata and colorspace checked.</span><span class="t-th">เช็กเมทาดาต้าและคัลเลอร์สเปซ</span></span></div>
       <div class="arrow">→</div>
-      <div class="step"><div class="no mono">2</div><b>ROTO</b><div class="s-sub"><span class="t-ja">ロト</span><span class="t-en">Roto</span><span class="t-th">โรโต้</span></div><span class="d"><span class="t-ja">マットを抜き、レイヤーを分けて、最初のプレビューを送ります。</span><span class="t-en">Mattes cut, layers split, first preview out.</span><span class="t-th">ตัดแมตต์ แยกเลเยอร์ ส่งพรีวิวรอบแรก</span></span></div>
+      <div class="step"><div class="no mono">2</div><b>ROTO</b><div class="s-sub"><span class="t-ja">ロト</span><span class="t-en">Roto</span><span class="t-th">โรโต้</span></div><span class="d"><span class="t-ja">マットを抜き、最初のプレビューを送ります。</span><span class="t-en">Mattes cut, first preview out.</span><span class="t-th">ตัดแมตต์ ส่งพรีวิวรอบแรก</span></span></div>
       <div class="arrow">→</div>
-      <div class="step"><div class="no mono">3</div><b>TRACK</b><div class="s-sub"><span class="t-ja">トラッキング</span><span class="t-en">Track</span><span class="t-th">แทร็ก</span></div><span class="d"><span class="t-ja">カメラをソルブして、シーンの基準を置きます。</span><span class="t-en">Camera solved, scene reference placed.</span><span class="t-th">solve กล้อง วางจุดอ้างอิงในฉาก</span></span></div>
+      <div class="step"><div class="no mono">3</div><b>TRACK</b><div class="s-sub"><span class="t-ja">トラッキング</span><span class="t-en">Track</span><span class="t-th">แทร็ก</span></div><span class="d"><span class="t-ja">カメラをソルブ。</span><span class="t-en">Camera solved.</span><span class="t-th">solve กล้อง</span></span></div>
       <div class="arrow">→</div>
-      <div class="step"><div class="no mono">4</div><b>COMP</b><div class="s-sub"><span class="t-ja">コンポジット</span><span class="t-en">Comp</span><span class="t-th">คอมพ์</span></div><span class="d"><span class="t-ja">光・エッジ・グレインを合わせて組み上げます。</span><span class="t-en">Assembled — light, edges and grain matched.</span><span class="t-th">ประกอบภาพ คุมแสง ขอบ และเกรน</span></span></div>
+      <div class="step"><div class="no mono">4</div><b>COMP</b><div class="s-sub"><span class="t-ja">コンポジット</span><span class="t-en">Comp</span><span class="t-th">คอมพ์</span></div><span class="d"><span class="t-ja">光・エッジ・グレインを合わせます。</span><span class="t-en">Light, edges and grain matched.</span><span class="t-th">คุมแสง ขอบ และเกรน</span></span></div>
       <div class="arrow">→</div>
       <div class="step"><div class="no mono">5</div><b>GRADE</b><div class="s-sub"><span class="t-ja">グレーディング</span><span class="t-en">Grade</span><span class="t-th">เกรดสี</span></div><span class="d"><span class="t-ja">納品先のカラースペースで最終確認。</span><span class="t-en">Checked in the delivery colorspace.</span><span class="t-th">ตรวจในคัลเลอร์สเปซปลายทาง</span></span></div>
       <div class="arrow">→</div>
-      <div class="step"><div class="no mono">6</div><b>DELIVER</b><div class="s-sub"><span class="t-ja">納品</span><span class="t-en">Deliver</span><span class="t-th">ส่งมอบ</span></div><span class="d"><span class="t-ja">全フレームの EXR とプロジェクトファイルをお渡しします。</span><span class="t-en">Full-range EXR plus the project files.</span><span class="t-th">ส่ง EXR ครบเฟรม พร้อมไฟล์โปรเจกต์</span></span></div>
+      <div class="step"><div class="no mono">6</div><b>DELIVER</b><div class="s-sub"><span class="t-ja">納品</span><span class="t-en">Deliver</span><span class="t-th">ส่งมอบ</span></div><span class="d"><span class="t-ja">全フレームの EXR とプロジェクトファイル。</span><span class="t-en">Full-range EXR plus the project files.</span><span class="t-th">ส่ง EXR ครบเฟรม พร้อมไฟล์โปรเจกต์</span></span></div>
     </div>
   </section>
 
@@ -691,9 +736,9 @@ footer{border-top:2px dotted var(--line);padding-block:24px calc(30px + env(safe
     <div class="head">
       <h2><span class="t-ja">ミングのおはなし</span><span class="t-en">Ming's story</span><span class="t-th">เรื่องของหมิง</span></h2>
       <div class="h-sub"><span class="t-ja">Before we met</span><span class="t-en">出会うまえの話</span><span class="t-th">ก่อนจะมาเจอกัน</span></div>
-      <p class="sub t-ja">ミングがここに来るまでに、いくつもの家と、いくつもの「ちがった」があります。</p>
-      <p class="sub t-en">Ming passed through a lot of houses, and a lot of near-misses, before he got here.</p>
-      <p class="sub t-th">กว่าหมิงจะมาถึงตรงนี้ ผ่านมาหลายบ้าน และผ่านการพลาดกันมาหลายครั้ง</p>
+      <p class="sub t-ja">ここに来るまでに、いくつもの家と、いくつもの「ちがった」がありました。</p>
+      <p class="sub t-en">A lot of houses, and a lot of near-misses, before he got here.</p>
+      <p class="sub t-th">กว่าจะมาถึงตรงนี้ ผ่านมาหลายบ้าน และพลาดกันมาหลายครั้ง</p>
     </div>
 
     <div class="origin">
@@ -711,23 +756,23 @@ footer{border-top:2px dotted var(--line);padding-block:24px calc(30px + env(safe
         <div class="chap">
           <div class="no mono">CHAPTER 01</div>
           <h3><span class="t-ja">ソム</span><span class="t-en">Som</span><span class="t-th">ส้ม</span></h3>
-          <p class="t-ja">ミングになる前、彼の名前は「ソム」——タイ語で“オレンジ”。年を重ね、体にもいくつか問題を抱えた、のらねこでした。</p>
-          <p class="t-en">Before he was Ming, his name was Som — Thai for “orange.” A stray, already getting on in years, already carrying a few health problems.</p>
+          <p class="t-ja">ミングになる前の名前は「ソム」——タイ語で“オレンジ”。年を重ね、体にも問題を抱えたのらねこでした。</p>
+          <p class="t-en">Before Ming, he was Som — Thai for “orange.” A stray, already old, already with health problems.</p>
           <p class="t-th">ก่อนจะชื่อหมิง เขาชื่อ “ส้ม” แมวจรที่มีอายุอานามและปัญหาสุขภาพมาประมาณนึงแล้ว</p>
         </div>
         <div class="chap">
           <div class="no mono">CHAPTER 02</div>
           <h3><span class="t-ja">いくつもの家を</span><span class="t-en">Several homes</span><span class="t-th">ผ่านมาหลายบ้าน</span></h3>
-          <p class="t-ja">何軒もの家を渡り歩きました。甘えん坊で、なかなかのいたずら者。だからこそ、たくさんの人が彼に落ちたのでしょう。</p>
-          <p class="t-en">He passed through several homes. Clingy, and a proper little troublemaker — which is probably exactly why so many people fell for him.</p>
-          <p class="t-th">เคยมีคนเลี้ยงมาหลายบ้าน คงเพราะเป็นแมวขี้อ้อนและแสบน่าดู ถึงตกนุดได้หลายคน</p>
+          <p class="t-ja">何軒もの家を渡り歩きました。甘えん坊で、いたずら者。だから多くの人が落ちたのでしょう。</p>
+          <p class="t-en">Several homes. Clingy, and a proper troublemaker — probably why so many people fell for him.</p>
+          <p class="t-th">ผ่านมาหลายบ้าน คงเพราะขี้อ้อนและแสบน่าดู ถึงตกนุดได้หลายคน</p>
         </div>
         <div class="chap">
           <div class="no mono">CHAPTER 03</div>
           <h3><span class="t-ja">フランスさん</span><span class="t-en">Khun France</span><span class="t-th">คุณฟร้านซ์</span></h3>
-          <p class="t-ja">猫を愛する外国人、フランスさんと、のらねこを助けるプロジェクトに救われました。その日に何があったのか、正確なところは誰も知りません。</p>
-          <p class="t-en">He was rescued through Khun France — a foreigner who loves cats — and a project caring for strays. Nobody knows exactly what happened that day.</p>
-          <p class="t-th">ได้รับการช่วยเหลือผ่านคุณฟร้านซ์ ฝรั่งรักแมว จากโครงการรักษ์แมวปันน้ำใจให้แมวจร ไม่มีใครรู้เหตุการณ์วันนั้นแบบเป๊ะ ๆ</p>
+          <p class="t-ja">猫を愛する外国人フランスさんと、のらねこを助けるプロジェクトに救われました。その日のことは誰も正確には知りません。</p>
+          <p class="t-en">Rescued through Khun France, a cat-loving foreigner, and a stray-cat project. Nobody knows exactly what happened that day.</p>
+          <p class="t-th">ได้รับการช่วยเหลือผ่านคุณฟร้านซ์ ฝรั่งรักแมว จากโครงการรักษ์แมวปันน้ำใจให้แมวจร ไม่มีใครรู้เหตุการณ์วันนั้นเป๊ะ ๆ</p>
         </div>
         <div class="chap">
           <div class="no mono">CHAPTER 04</div>
@@ -739,30 +784,30 @@ footer{border-top:2px dotted var(--line);padding-block:24px calc(30px + env(safe
         <div class="chap">
           <div class="no mono">CHAPTER 05</div>
           <h3><span class="t-ja">Cat Expo</span><span class="t-en">Cat Expo</span><span class="t-th">Cat Expo</span></h3>
-          <p class="t-ja">その日は、猫を飼うつもりなんてありませんでした——ミングに会うまでは。ひと目で決まり。でもスタッフの返事は「もう引き取り手が決まりました」。</p>
-          <p class="t-en">We weren't there to adopt a cat. Then we met Ming. That was that — except the staff said someone had already taken him.</p>
-          <p class="t-th">วันนั้นไม่ได้ตั้งใจจะเลี้ยงแมว จนไปเจอกับหมิง ถูกชะตา ปิ๊ง ๆ ตัดสินใจจะพาไปอยู่ด้วย แต่พี่โครงการบอกว่า มีคนมารับหมิงไปแล้ว</p>
+          <p class="t-ja">猫を飼うつもりはありませんでした——ミングに会うまでは。ひと目で決まり。でも返事は「もう引き取り手が決まりました」。</p>
+          <p class="t-en">We weren't there to adopt. Then we met Ming. That was that — except someone had already taken him.</p>
+          <p class="t-th">วันนั้นไม่ได้ตั้งใจจะเลี้ยงแมว จนเจอหมิง ถูกชะตา ปิ๊ง ๆ แต่พี่โครงการบอกว่า มีคนมารับไปแล้ว</p>
         </div>
         <div class="chap">
           <div class="no mono">CHAPTER 06</div>
           <h3><span class="t-ja">数日後の電話</span><span class="t-en">The call</span><span class="t-th">ไม่กี่วันต่อมา</span></h3>
-          <p class="t-ja">数日後、同じスタッフから連絡が来ました。「あの方がミングを返しに来ました。まだ引き取る気があるなら、クリニックまで来てください」</p>
-          <p class="t-en">A few days later, the same staff member got in touch: the man had brought Ming back. If we still wanted him, we could collect him from the clinic.</p>
-          <p class="t-th">ไม่กี่วันต่อมา พี่คนเดิมติดต่อมา ว่าพี่ผู้ชายคนที่รับหมิงไป เอาหมิงมาคืน ถ้ายังอยากดูแลหมิง มารับจากที่คลินิกได้เลย</p>
+          <p class="t-ja">数日後、連絡が来ました。「あの方がミングを返しに来ました。まだ引き取る気があるなら、クリニックへ」</p>
+          <p class="t-en">A few days later: the man had brought Ming back. If we still wanted him, come to the clinic.</p>
+          <p class="t-th">ไม่กี่วันต่อมา พี่คนเดิมติดต่อมา ว่าคนที่รับไป เอาหมิงมาคืน ถ้ายังอยากดูแล มารับที่คลินิกได้เลย</p>
         </div>
         <div class="chap">
           <div class="no mono">CHAPTER 07</div>
           <h3><span class="t-ja">迎えた日</span><span class="t-en">Pickup day</span><span class="t-th">วันไปรับ</span></h3>
-          <p class="t-ja">本当に同じねこ？ケージから、堂々と歩いて出てきました。まだ痩せていたけれど、目つきは鷹のよう。家に着くと、さっそくいろんな“特技”を披露してくれました。</p>
-          <p class="t-en">Same cat? He strolled out of that cage like he owned it. Still skinny — but with the eyes of a hawk. Back home, he started showing off his many talents right away.</p>
-          <p class="t-th">เฮ้ย นี่มันตัวเดียวกันหรือเปล่า หมิงดูซ่า เดินออกจากกรงแบบเก๋าเว้ย ตัวยังผอม ๆ แต่ตาเหยี่ยวมากแม่ พอกลับถึงบ้าน หมิงก็โชว์ความสามารถหลายอย่าง</p>
+          <p class="t-ja">本当に同じねこ？ケージから堂々と歩いて出てきました。まだ痩せていたけれど、目つきは鷹のよう。</p>
+          <p class="t-en">Same cat? He strolled out of that cage like he owned it. Still skinny — but with the eyes of a hawk.</p>
+          <p class="t-th">เฮ้ย ตัวเดียวกันหรือเปล่า หมิงเดินออกจากกรงแบบเก๋าเว้ย ตัวยังผอม ๆ แต่ตาเหยี่ยวมากแม่</p>
         </div>
         <div class="chap now">
           <div class="no mono">CHAPTER 08</div>
           <h3><span class="t-ja">11年</span><span class="t-en">Eleven years</span><span class="t-th">11 ปี</span></h3>
-          <p class="t-ja">食べ物にも寝床にもこだわらない子だったのに、年ごとに“要求”が増えていきました。いま、いっしょに11年。すっかり年長者で、毎日は年上の親戚を介護しているようです。そして毎日、いい思い出を集めています——今日の分も。</p>
-          <p class="t-en">He started out easy — easy to feed, easy to please — and got more particular every year. Eleven years together now. He's properly old, and the days feel like caring for an elderly relative. Every one of them goes into the good memories — today included.</p>
-          <p class="t-th">จากหมิงที่กินง่าย อยู่ง่าย ก็พัฒนาความเยอะขึ้นไปแต่ละปี ตอนนี้อยู่ด้วยกันมา 11 ปี หมิงชราขึ้นเยอะ เหมือนดูแลญาติผู้ใหญ่ ทุก ๆ วันก็เก็บความทรงจำดี ๆ เอาไว้ รวมถึงวันนี้ด้วย</p>
+          <p class="t-ja">こだわらない子だったのに、年ごとに“要求”が増えました。いま、いっしょに11年。毎日、いい思い出を集めています——今日の分も。</p>
+          <p class="t-en">He started out easy and got more particular every year. Eleven years together now. Every day goes into the good memories — today included.</p>
+          <p class="t-th">จากแมวที่กินง่ายอยู่ง่าย ก็เยอะขึ้นทุกปี ตอนนี้อยู่ด้วยกันมา 11 ปี ทุกวันเก็บความทรงจำดี ๆ ไว้ รวมถึงวันนี้ด้วย</p>
         </div>
       <div class="promise">
         <span class="heart">❤️</span>
@@ -782,12 +827,12 @@ footer{border-top:2px dotted var(--line);padding-block:24px calc(30px + env(safe
     </div>
     <div class="about">
       <div>
-        <p class="t-ja">ミングはオレンジと白のねこです。伝説も変身もありません。ただ画面の前にすわって、生のプレートを、だれにも触られたと気づかれない最終ショットに変えるねこです。</p>
-        <p class="t-en">Ming is an orange-and-white cat. No legend, no transformation — just a cat who sits in front of a screen and turns raw plates into finished shots nobody can tell were ever touched.</p>
-        <p class="t-th">หมิงเป็นแมวส้มขาว ไม่มีตำนาน ไม่มีการแปลงร่าง เป็นแค่แมวที่นั่งอยู่หน้าจอ แล้วเปลี่ยนเพลตดิบให้กลายเป็นช็อตสุดท้ายที่ไม่มีใครดูออกว่าถูกแตะมาก่อน</p>
-        <p class="t-ja">良いコンポジットは、観客が気づかない仕事です。だからここでは派手さでは測りません。硬くならないエッジ、合っているグレイン、シーケンス全体でぶれないマット——測るのはそれだけです。</p>
-        <p class="t-en">Good compositing is work the audience never notices. So nothing here is measured by spectacle. It's measured by edges that don't go hard, grain that matches, and mattes that hold steady across the whole sequence.</p>
-        <p class="t-th">งานคอมโพสิตที่ดีคืองานที่คนดูมองไม่เห็น เกณฑ์วัดผลที่นี่จึงไม่ใช่ความอลังการ แต่คือขอบที่ไม่แข็ง เกรนที่เข้ากัน และแมตต์ที่ไม่สั่นตลอดทั้งซีเควนซ์</p>
+        <p class="t-ja">ミングはオレンジと白のねこ。画面の前にすわって、生のプレートを、だれにも気づかれない最終ショットに変えます。</p>
+        <p class="t-en">Ming is an orange-and-white cat. He sits in front of a screen and turns raw plates into shots nobody can tell were touched.</p>
+        <p class="t-th">หมิงเป็นแมวส้มขาว นั่งอยู่หน้าจอ แล้วเปลี่ยนเพลตดิบให้เป็นช็อตที่ไม่มีใครดูออกว่าถูกแตะ</p>
+        <p class="t-ja">良いコンポジットは、観客が気づかない仕事。測るのは、硬くならないエッジ、合うグレイン、ぶれないマットだけ。</p>
+        <p class="t-en">Good compositing is work nobody notices. Measured only by soft edges, matching grain, and mattes that hold steady.</p>
+        <p class="t-th">งานคอมพ์ที่ดีคืองานที่คนดูมองไม่เห็น วัดกันแค่ขอบที่ไม่แข็ง เกรนที่เข้ากัน และแมตต์ที่ไม่สั่น</p>
         <div class="pull">
           <span class="t-ja">継ぎ目がなくなるまで、1フレームずつ。それから納品します。</span>
           <span class="t-en">Frame by frame until it's seamless, then it ships.</span><span class="t-th">ทำทีละเฟรมจนกว่าจะเนียน แล้วค่อยส่ง</span>
@@ -804,13 +849,45 @@ footer{border-top:2px dotted var(--line);padding-block:24px calc(30px + env(safe
     </div>
   </section>
 
+  <div class="runner" aria-hidden="true">
+    <span class="ground"></span>
+    <svg class="dash-cat" viewBox="0 0 176 104" xmlns="http://www.w3.org/2000/svg">
+      <g class="speed" stroke="#F79A46" stroke-width="3" stroke-linecap="round" fill="none">
+        <path d="M2 40 H20"/><path d="M0 54 H14"/><path d="M4 68 H18"/>
+      </g>
+      <g class="rtail"><path d="M38 48 C 22 46 12 34 16 20" stroke="#F79A46" stroke-width="9" stroke-linecap="round" fill="none"/></g>
+      <g class="leg lg1"><path d="M56 58 L56 84" stroke="#DD7C31" stroke-width="8" stroke-linecap="round" fill="none"/><ellipse cx="56" cy="86" rx="6.5" ry="4.5" fill="#FFFFFF"/></g>
+      <g class="leg lg2"><path d="M104 58 L104 84" stroke="#DD7C31" stroke-width="8" stroke-linecap="round" fill="none"/><ellipse cx="104" cy="86" rx="6.5" ry="4.5" fill="#FFFFFF"/></g>
+      <g class="body-g">
+        <ellipse cx="74" cy="52" rx="40" ry="21" fill="#F79A46"/>
+        <path d="M46 62 C 58 71 96 71 106 61 C 94 68 56 68 46 62 Z" fill="#FFFFFF"/>
+        <path d="M58 36 C 62 33 66 33 69 36 M76 34 C 80 31 84 31 87 34 M94 36 C 98 33 102 33 105 36"
+              stroke="#E07B2C" stroke-width="4.5" stroke-linecap="round" fill="none" opacity=".55"/>
+        <path d="M114 28 L112 8 L130 21 Z" fill="#F79A46"/>
+        <path d="M117 27 L116 14 L127 22 Z" fill="#F7B7C0"/>
+        <circle cx="128" cy="43" r="21" fill="#F79A46"/>
+        <ellipse cx="139" cy="51" rx="14" ry="10" fill="#FFFFFF"/>
+        <path d="M120 39 C 123 34 129 34 132 39" stroke="#5A4232" stroke-width="3.6" stroke-linecap="round" fill="none"/>
+        <ellipse cx="149" cy="48" rx="4.5" ry="3.4" fill="#FF9AA8"/>
+        <g stroke="#E8D6C2" stroke-width="2.2" stroke-linecap="round" fill="none" opacity=".85">
+          <path d="M150 54 C 160 56 166 58 171 61"/><path d="M150 45 C 160 43 166 41 171 39"/>
+        </g>
+        <path d="M108 34 C 111 46 115 54 119 59" stroke="#E0483D" stroke-width="6.5" stroke-linecap="round" fill="none"/>
+        <circle cx="120" cy="64" r="6" fill="#DCE2E8"/>
+        <path d="M115 65 H125" stroke="#7E8B96" stroke-width="1.6" fill="none"/>
+      </g>
+      <g class="leg lg3"><path d="M46 58 L46 84" stroke="#F79A46" stroke-width="8" stroke-linecap="round" fill="none"/><ellipse cx="46" cy="86" rx="6.5" ry="4.5" fill="#FFFFFF"/></g>
+      <g class="leg lg4"><path d="M94 58 L94 84" stroke="#F79A46" stroke-width="8" stroke-linecap="round" fill="none"/><ellipse cx="94" cy="86" rx="6.5" ry="4.5" fill="#FFFFFF"/></g>
+    </svg>
+  </div>
+
   <section id="contact">
     <div class="contact">
       <h2><span class="t-ja">直したいショット、ありますか？</span><span class="t-en">Got a shot to fix?</span><span class="t-th">มีช็อตที่ต้องเก็บไหม</span></h2>
       <div class="h-sub"><span class="t-ja">Contact</span><span class="t-en">おといあわせ</span><span class="t-th">ติดต่อ</span></div>
-      <p class="t-ja">プレート、尺、納期をお送りください。1営業日以内に見積もりと空き状況をお返しします。</p>
-      <p class="t-en">Send the plate, the length and the deadline. You'll get a quote and an open slot back within one business day.</p>
-        <p class="t-th">ส่งเพลต ความยาว และเดดไลน์มา จะตอบกลับพร้อมราคาและคิวว่างภายในหนึ่งวันทำการ</p>
+      <p class="t-ja">プレート・尺・納期をお送りください。1営業日以内にお返事します。</p>
+      <p class="t-en">Send the plate, the length and the deadline. Reply within one business day.</p>
+        <p class="t-th">ส่งเพลต ความยาว และเดดไลน์มา ตอบกลับภายในหนึ่งวันทำการ</p>
       <div class="cta">
         <a class="btn btn-a" href="#contact">hello@somvfxcat.com<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <a class="btn btn-b" href="#contact"><span class="t-ja">リールを見る</span><span class="t-en">Download reel</span><span class="t-th">ดูรีล</span></a>

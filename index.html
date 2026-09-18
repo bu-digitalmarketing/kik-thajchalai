@@ -1,0 +1,855 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Ming — an orange-and-white cat. VFX compositing by somvfxcat. / ミング（MING）— オレンジと白のねこ。somvfxcat のVFXコンポジット。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%90%88%3C/text%3E%3C/svg%3E">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="somvfxcat — ミング / MING">
+<meta property="og:description" content="Ming — an orange-and-white cat. VFX compositing by somvfxcat.">
+<meta name="twitter:card" content="summary_large_image">
+
+<style>
+  /* standalone document reset (the artifact host normally provides this) */
+  :root{color-scheme:light dark}
+  img{max-width:100%}
+  [hidden]{display:none!important}
+</style>
+
+<title>somvfxcat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800&family=Zen+Maru+Gothic:wght@400;500;700&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* ══ somvfxcat · ミング / MING ══════════════════════════════ */
+:root{
+  --ground:#FFFBF4;
+  --panel:#FFFFFF;
+  --panel-2:#FFF4E7;
+  --line:#F3E1CD;
+  --line-soft:#FAEEE0;
+
+  --som:#EF6C12;
+  --som-bright:#FF8A3D;
+  --som-soft:#FFF0E0;
+  --som-glow:rgba(255,150,70,.22);
+
+  --ink:#33291F;
+  --muted:#6E6157;
+  --faint:#A3948A;
+  --leaf:#2E9E7E;
+  --pink:#FF8FA0;
+  --bell:#E0483D;
+
+  --shadow:0 2px 3px rgba(120,70,30,.05), 0 16px 36px -20px rgba(140,80,35,.32);
+
+  --round:"M PLUS Rounded 1c","IBM Plex Sans Thai",system-ui,sans-serif;
+  --maru:"Zen Maru Gothic","IBM Plex Sans Thai","Hiragino Maru Gothic ProN",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+
+  --pawmask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cellipse cx='6.3' cy='9' rx='2.5' ry='3.3'/%3E%3Cellipse cx='11' cy='6.4' rx='2.5' ry='3.4'/%3E%3Cellipse cx='16' cy='7.4' rx='2.4' ry='3.2'/%3E%3Cellipse cx='19.6' cy='11.4' rx='2.2' ry='2.8'/%3E%3Cpath d='M12.6 12c3.4 0 6.2 2.6 6.2 5.4 0 2.2-1.9 3.4-4 3.4-1.2 0-1.6-.5-2.9-.5s-1.7.5-2.9.5c-2.1 0-4-1.2-4-3.4C5 14.6 9.2 12 12.6 12z'/%3E%3C/svg%3E");
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#1C1611; --panel:#261E17; --panel-2:#31241A;
+    --line:#3F3025; --line-soft:#30251C;
+    --som:#FF9A55; --som-bright:#FF8A3D; --som-soft:#34241A; --som-glow:rgba(255,150,70,.16);
+    --ink:#F8F0E6; --muted:#BEAD9F; --faint:#8D7C6F;
+    --leaf:#4FCBA6; --pink:#FF9BA8; --bell:#F06A5C;
+    --shadow:0 2px 3px rgba(0,0,0,.4), 0 16px 36px -20px rgba(0,0,0,.85);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#1C1611; --panel:#261E17; --panel-2:#31241A;
+  --line:#3F3025; --line-soft:#30251C;
+  --som:#FF9A55; --som-bright:#FF8A3D; --som-soft:#34241A; --som-glow:rgba(255,150,70,.16);
+  --ink:#F8F0E6; --muted:#BEAD9F; --faint:#8D7C6F;
+  --leaf:#4FCBA6; --pink:#FF9BA8; --bell:#F06A5C;
+  --shadow:0 2px 3px rgba(0,0,0,.4), 0 16px 36px -20px rgba(0,0,0,.85);
+}
+
+/* ── 3 languages: JA default, EN / TH on toggle ── */
+:root:not([data-lang="en"]) .t-en{display:none}
+:root:not([data-lang="th"]) .t-th{display:none}
+:root[data-lang="en"] .t-ja{display:none}
+:root[data-lang="th"] .t-ja{display:none}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--ground);color:var(--ink);
+  font-family:var(--maru);font-size:16px;line-height:1.9;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{margin:0;font-family:var(--round);font-weight:800;line-height:1.35;text-wrap:balance}
+p{margin:0 0 15px;color:var(--muted);max-width:60ch}
+p:last-child{margin-bottom:0}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:24px}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+a:focus-visible,button:focus-visible{outline:2px solid var(--som);outline-offset:3px;border-radius:8px}
+
+/* ══ bar ══ */
+.bar{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:60;
+  background:color-mix(in srgb,var(--ground) 90%,transparent);
+  backdrop-filter:blur(14px);border-bottom:2px dotted var(--line);
+}
+.bar-in{display:flex;align-items:center;gap:16px;height:64px}
+.mark{display:flex;align-items:center;gap:9px;font-family:var(--round);font-weight:800;font-size:17.5px;white-space:nowrap}
+.mark .pawmark{width:24px;height:24px;flex:none}
+.mark .pawmark path,.mark .pawmark ellipse{fill:var(--som-bright)}
+.mark span{color:var(--som)}
+.bar nav{margin-left:auto;display:flex;gap:2px}
+.bar nav a{
+  font-family:var(--round);font-weight:500;font-size:13.5px;
+  color:var(--muted);padding:7px 12px;border-radius:99px;transition:color .15s,background .15s;
+}
+.bar nav a:hover{color:var(--som);background:var(--som-soft)}
+.lang{display:flex;background:var(--panel-2);border:1px solid var(--line);border-radius:99px;padding:3px;flex:none}
+.lang button{
+  font-family:var(--round);font-weight:700;font-size:12px;border:0;cursor:pointer;
+  background:transparent;color:var(--muted);padding:5px 12px;border-radius:99px;transition:.15s;
+}
+.lang button[aria-pressed="true"]{background:var(--som-bright);color:#fff}
+
+/* ══ hero ══ */
+.hero{padding-block:60px 0;position:relative}
+.hero-in{position:relative;display:grid;grid-template-columns:1.02fr .98fr;gap:52px;align-items:center}
+.tape{
+  display:inline-block;font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--som);background:var(--som-soft);padding:6px 16px;border-radius:99px;margin-bottom:22px;
+  border:1px dashed var(--som-bright);
+}
+.wordmark{font-family:var(--round);font-weight:800;font-size:clamp(46px,7.4vw,78px);letter-spacing:-.04em;line-height:1;color:var(--ink)}
+.wordmark em{font-style:normal;color:var(--som)}
+.jpname{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-top:14px;font-family:var(--round);font-weight:800;font-size:clamp(26px,3.8vw,36px);color:var(--ink)}
+.jpname .en{color:var(--leaf);font-size:.6em;letter-spacing:.1em}
+.role{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-top:8px}
+.lede{font-size:17px;line-height:1.95;color:var(--muted);margin-top:20px;max-width:42ch}
+.lede b{color:var(--ink);font-weight:700}
+.cta{display:flex;gap:11px;flex-wrap:wrap;margin-top:30px}
+.btn{
+  display:inline-flex;align-items:center;gap:9px;font-family:var(--round);font-weight:700;font-size:15px;
+  padding:13px 24px;border-radius:99px;transition:transform .18s,background .18s,border-color .18s;
+}
+.btn-a{background:var(--som-bright);color:#fff;box-shadow:0 10px 22px -12px var(--som-bright)}
+.btn-a:hover{background:var(--som);transform:translateY(-3px)}
+.btn-b{border:2px solid var(--line);color:var(--ink)}
+.btn-b:hover{border-color:var(--som-bright);color:var(--som);transform:translateY(-3px)}
+.btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+
+/* vertical japanese rail */
+.vrail{
+  writing-mode:vertical-rl;font-family:var(--maru);font-weight:500;font-size:13px;
+  letter-spacing:.34em;color:var(--faint);position:absolute;right:-2px;top:6px;height:auto;
+  border-right:2px dotted var(--line);padding-right:14px;
+}
+
+/* ══ mascot ══ */
+.mascot{position:relative;display:grid;place-items:center;min-height:400px}
+.rays{
+  position:absolute;width:112%;max-width:520px;aspect-ratio:1/1;border-radius:50%;
+  background:repeating-conic-gradient(from 0deg,var(--som-glow) 0deg 7deg,transparent 7deg 20deg);
+  animation:spin 60s linear infinite;z-index:0;
+  -webkit-mask-image:radial-gradient(circle,transparent 42%,#000 62%,transparent 88%);
+  mask-image:radial-gradient(circle,transparent 42%,#000 62%,transparent 88%);
+}
+.sun{
+  position:relative;z-index:1;width:min(100%,400px);aspect-ratio:1/1;border-radius:50%;
+  background:radial-gradient(circle at 50% 40%,#FFEFDC,#FFDCBB 60%,#FFCB9C);
+  display:grid;place-items:center;box-shadow:var(--shadow);
+}
+.sun svg.ming{width:84%;height:auto;max-width:100%;display:block}
+.chip{
+  position:absolute;z-index:3;background:var(--panel);border:1px solid var(--line);border-radius:99px;
+  padding:7px 14px;font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--muted);
+  box-shadow:var(--shadow);white-space:nowrap;
+}
+.chip b{color:var(--som);font-weight:500}
+.chip-1{top:4%;left:-2%}
+.chip-2{bottom:9%;right:-2%}
+
+/* floating paws */
+.paws{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.paws i{position:absolute;width:24px;height:24px;opacity:0;animation:floatUp 11s linear infinite}
+.paws i svg path,.paws i svg ellipse{fill:var(--som-bright)}
+.paws i:nth-child(1){left:6%;bottom:8%;animation-delay:0s}
+.paws i:nth-child(2){left:26%;bottom:2%;animation-delay:2.2s;width:18px}
+.paws i:nth-child(3){left:52%;bottom:10%;animation-delay:4.4s;width:28px}
+.paws i:nth-child(4){left:74%;bottom:0%;animation-delay:6.6s;width:20px}
+.paws i:nth-child(5){left:90%;bottom:12%;animation-delay:8.8s}
+
+/* ── ming animation ── */
+.cat-body{transform-box:fill-box;transform-origin:50% 100%;animation:breathe 3.6s ease-in-out infinite}
+.ear-l{transform-box:fill-box;transform-origin:50% 100%;animation:earL 6s ease-in-out infinite}
+.ear-r{transform-box:fill-box;transform-origin:50% 100%;animation:earR 7.4s ease-in-out infinite}
+.tail{transform-box:fill-box;transform-origin:2% 70%;animation:tail 4.2s ease-in-out infinite}
+.bell-g{transform-box:fill-box;transform-origin:50% 0%;animation:bell 2.6s ease-in-out infinite}
+.eyes-shut{animation:shut 9s ease-in-out infinite}
+.eyes-open{opacity:0;animation:open 9s ease-in-out infinite}
+.whisk{transform-box:fill-box;transform-origin:50% 50%;animation:whisk 5.2s ease-in-out infinite}
+
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.018)}}
+@keyframes earL{0%,84%,100%{transform:rotate(0)}88%{transform:rotate(-8deg)}92%{transform:rotate(3deg)}96%{transform:rotate(-2deg)}}
+@keyframes earR{0%,78%,100%{transform:rotate(0)}83%{transform:rotate(7deg)}88%{transform:rotate(-3deg)}93%{transform:rotate(1deg)}}
+@keyframes tail{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(7deg)}}
+@keyframes bell{0%,100%{transform:rotate(-9deg)}50%{transform:rotate(9deg)}}
+@keyframes shut{0%,58%,100%{opacity:1}64%,80%{opacity:0}}
+@keyframes open{0%,58%,100%{opacity:0}64%,80%{opacity:1}}
+@keyframes whisk{0%,100%{transform:rotate(0)}50%{transform:rotate(1.6deg)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes floatUp{
+  0%{transform:translateY(0) rotate(-10deg);opacity:0}
+  12%{opacity:.42}
+  84%{opacity:.42}
+  100%{transform:translateY(-230px) rotate(26deg);opacity:0}
+}
+
+/* ══ stats ══ */
+.stats{margin-top:60px;background:var(--panel);border-block:2px dotted var(--line)}
+.stats-in{display:grid;grid-template-columns:repeat(4,1fr)}
+.stats-in>div{padding:22px 24px;border-left:2px dotted var(--line-soft)}
+.stats-in>div:first-child{border-left:0}
+.stats .n{font-family:var(--round);font-weight:800;font-size:31px;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1.2}
+.stats .n i{font-style:normal;color:var(--som);font-size:18px}
+.stats .l{font-size:12.5px;color:var(--faint);line-height:1.6;margin-top:2px}
+
+/* ══ sections ══ */
+section{padding-block:76px}
+.head{margin-bottom:34px}
+.head h2{font-size:31px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.head h2::before{content:"";width:26px;height:26px;flex:none;background:var(--som-bright);
+  -webkit-mask:var(--pawmask) center/contain no-repeat;mask:var(--pawmask) center/contain no-repeat}
+.head .h-sub{font-family:var(--round);font-weight:700;font-size:16px;color:var(--som);margin-top:4px}
+.head .sub{color:var(--muted);margin-top:12px;max-width:56ch}
+
+.divider{display:flex;align-items:center;justify-content:center;gap:16px;padding-block:6px}
+.divider svg{width:20px;height:20px;opacity:.5}
+.divider svg path,.divider svg ellipse{fill:var(--som-bright)}
+.divider svg:nth-child(2){transform:translateY(-9px) rotate(14deg)}
+.divider svg:nth-child(4){transform:translateY(-9px) rotate(-14deg)}
+
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:16px}
+.card{background:var(--panel);border:2px solid var(--line);border-radius:24px;padding:24px;transition:transform .2s,border-color .2s,box-shadow .2s}
+.card:hover{transform:translateY(-5px);border-color:var(--som-bright);box-shadow:var(--shadow)}
+.card .ico{width:46px;height:46px;border-radius:16px;background:var(--som-soft);display:grid;place-items:center;margin-bottom:15px}
+.card .ico svg{width:23px;height:23px;stroke:var(--som);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-size:18px}
+.card .h-sub{font-family:var(--round);font-weight:500;font-size:13px;color:var(--leaf);margin-top:2px}
+.card p{font-size:14.5px;line-height:1.85;margin:12px 0 0}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:15px}
+.tags span{font-family:var(--mono);font-size:10.5px;color:var(--muted);background:var(--panel-2);padding:4px 10px;border-radius:99px}
+
+/* work */
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px}
+.shot{background:var(--panel);border:2px solid var(--line);border-radius:24px;overflow:hidden;transition:transform .2s,border-color .2s,box-shadow .2s}
+.shot:hover{transform:translateY(-5px);border-color:var(--som-bright);box-shadow:var(--shadow)}
+.frame{position:relative;aspect-ratio:2.39/1;max-width:100%;display:grid;place-items:center}
+.f1{background:linear-gradient(140deg,#A6CBEA,#E2EDF6 55%,#F8D2AB)}
+.f2{background:linear-gradient(140deg,#C3E2C7,#ECF5E5 55%,#FFE5BC)}
+.f3{background:linear-gradient(140deg,#FFD3A8,#FFEBD3 52%,#FFBDA4)}
+.f4{background:linear-gradient(140deg,#ACDEE2,#E8F5F3 55%,#FFDFC4)}
+.slate{font-family:var(--mono);font-size:11px;letter-spacing:.09em;color:#4E3E32;background:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.95);padding:6px 13px;border-radius:99px}
+.shot-body{padding:18px 20px 20px}
+.shot h3{font-size:17px}
+.shot .h-sub{font-family:var(--round);font-weight:500;font-size:13px;color:var(--muted);margin-top:2px}
+.shot .tag{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--som);background:var(--som-soft);padding:4px 11px;border-radius:99px;margin-top:10px}
+.shot dl{display:grid;grid-template-columns:auto 1fr;gap:5px 14px;margin:13px 0 0;font-family:var(--mono);font-size:11.5px}
+.shot dt{color:var(--faint);letter-spacing:.05em}
+.shot dd{margin:0;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
+
+/* day strip */
+.day{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.hour{background:var(--panel);border:2px dotted var(--line);border-radius:20px;padding:18px 16px;text-align:center}
+.hour .t{font-family:var(--mono);font-size:13px;color:var(--som);letter-spacing:.06em}
+.hour .e{font-size:26px;line-height:1.4;margin-top:4px}
+.hour .d{font-family:var(--round);font-weight:700;font-size:14px;color:var(--ink);margin-top:2px}
+
+/* pipeline */
+.pipe{display:flex;flex-wrap:wrap;align-items:stretch;gap:9px}
+.step{flex:1 1 128px;background:var(--panel);border:2px solid var(--line);border-radius:20px;padding:17px 15px}
+.step .no{width:27px;height:27px;border-radius:50%;background:var(--som-bright);color:#fff;display:grid;place-items:center;font-family:var(--mono);font-size:11px;margin-bottom:10px}
+.step b{display:block;font-family:var(--round);font-weight:800;font-size:14px;letter-spacing:.04em}
+.step .s-sub{font-size:12.5px;color:var(--leaf);line-height:1.6;margin-top:1px}
+.step .d{display:block;font-size:12.5px;color:var(--muted);line-height:1.75;margin-top:7px}
+.arrow{display:grid;place-items:center;color:var(--line);font-size:18px;flex:0 0 auto}
+
+/* about */
+.about{display:grid;grid-template-columns:1fr 288px;gap:50px;align-items:start}
+.about p{font-size:16.5px}
+.pull{background:var(--som-soft);border:2px dotted var(--som-bright);border-radius:22px;padding:22px 24px;margin-top:24px;font-family:var(--round);font-weight:700;font-size:18px;line-height:1.7;color:var(--ink);max-width:48ch}
+.facts{background:var(--panel);border:2px solid var(--line);border-radius:24px;padding:6px 22px}
+.facts>div{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-top:2px dotted var(--line-soft)}
+.facts>div:first-child{border-top:0}
+.facts .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);white-space:nowrap;padding-top:5px}
+.facts .v{color:var(--ink);text-align:right;font-size:14px;line-height:1.7}
+.facts .v small{display:block;color:var(--faint);font-size:12px}
+
+/* contact */
+.contact{background:var(--panel);border:2px solid var(--line);border-radius:30px;padding:44px;text-align:center;background-image:radial-gradient(circle at 50% 0%,var(--som-glow),transparent 56%);box-shadow:var(--shadow)}
+.contact h2{font-size:31px}
+.contact .h-sub{font-family:var(--round);font-weight:700;font-size:16px;color:var(--som);margin-top:6px}
+.contact p{margin:15px auto 0;max-width:50ch}
+.contact .cta{justify-content:center}
+.note{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--faint);margin-top:22px}
+
+footer{border-top:2px dotted var(--line);padding-block:24px calc(30px + env(safe-area-inset-bottom,0px))}
+.foot-in{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.04em}
+
+
+/* ══ story ══ */
+.story{position:relative;padding-left:52px;max-width:700px}
+.story::before{content:"";position:absolute;left:16px;top:14px;bottom:56px;border-left:2px dotted var(--line)}
+.chap{position:relative;padding-bottom:30px}
+.chap::before{
+  content:"";position:absolute;left:-52px;top:0;width:34px;height:34px;border-radius:50%;
+  background:var(--som-soft);border:2px solid var(--line);
+}
+.chap::after{
+  content:"";position:absolute;left:-43px;top:9px;width:16px;height:16px;background:var(--som-bright);
+  -webkit-mask:var(--pawmask) center/contain no-repeat;mask:var(--pawmask) center/contain no-repeat;
+}
+.chap .no{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--som)}
+.chap h3{font-size:18.5px;margin-top:2px}
+.chap p{margin:8px 0 0;font-size:15.5px;line-height:1.95}
+.chap.now::before{background:var(--som-bright);border-color:var(--som-bright)}
+.chap.now::after{background:#fff}
+.promise{
+  position:relative;margin-left:-52px;margin-top:6px;
+  background:var(--som-soft);border:2px dotted var(--som-bright);border-radius:24px;padding:26px 28px;
+  display:flex;gap:18px;align-items:flex-start;
+}
+.promise .heart{font-size:26px;line-height:1.3;flex:none}
+.promise p{font-family:var(--round);font-weight:700;font-size:17.5px;line-height:1.85;color:var(--ink);margin:0;max-width:46ch}
+.origin{
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:22px;
+  background:var(--panel);border:2px solid var(--line);border-radius:20px;padding:16px 20px;
+}
+.origin .from{font-family:var(--round);font-weight:800;font-size:22px;color:var(--som)}
+.origin .arr{color:var(--faint)}
+.origin .to{font-family:var(--round);font-weight:800;font-size:22px;color:var(--ink)}
+.origin .why{font-size:13.5px;color:var(--muted);line-height:1.7;flex:1 1 220px}
+
+@media (max-width:900px){
+  .hero-in{grid-template-columns:1fr;gap:40px}
+  .vrail{display:none}
+  .about{grid-template-columns:1fr;gap:32px}
+  .stats-in{grid-template-columns:repeat(2,1fr)}
+  .stats-in>div:nth-child(3){border-left:0}
+  .stats-in>div:nth-child(n+3){border-top:2px dotted var(--line-soft)}
+  section{padding-block:56px}
+  .bar nav{display:none}
+  .contact{padding:30px 22px}
+  .chip-1{left:0}.chip-2{right:0}
+  .mascot{min-height:340px}
+  .story{padding-left:42px}
+  .chap::before{left:-42px;width:28px;height:28px}
+  .chap::after{left:-35px;top:7px;width:14px;height:14px}
+  .promise{margin-left:-42px;padding:22px}
+}
+@media (max-width:560px){
+  .arrow{display:none}
+  .step{flex:1 1 100%}
+  .sun{width:min(100%,300px)}
+  .mark{font-size:15.5px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+  .eyes-open{opacity:0}
+}
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="wrap bar-in">
+    <a class="mark" href="#top">
+      <svg class="pawmark" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="6.3" cy="9" rx="2.5" ry="3.3"/><ellipse cx="11" cy="6.4" rx="2.5" ry="3.4"/><ellipse cx="16" cy="7.4" rx="2.4" ry="3.2"/><ellipse cx="19.6" cy="11.4" rx="2.2" ry="2.8"/><path d="M12.6 12c3.4 0 6.2 2.6 6.2 5.4 0 2.2-1.9 3.4-4 3.4-1.2 0-1.6-.5-2.9-.5s-1.7.5-2.9.5c-2.1 0-4-1.2-4-3.4C5 14.6 9.2 12 12.6 12z"/></svg>
+      som<span>vfx</span>cat
+    </a>
+    <nav>
+      <a href="#work"><span class="t-ja">おしごと</span><span class="t-en">Work</span><span class="t-th">ผลงาน</span></a>
+      <a href="#service"><span class="t-ja">できること</span><span class="t-en">Service</span><span class="t-th">บริการ</span></a>
+      <a href="#day"><span class="t-ja">いちにち</span><span class="t-en">A day</span><span class="t-th">หนึ่งวัน</span></a>
+      <a href="#story"><span class="t-ja">おはなし</span><span class="t-en">Story</span><span class="t-th">เรื่องของหมิง</span></a>
+      <a href="#about"><span class="t-ja">ミングについて</span><span class="t-en">About</span><span class="t-th">เกี่ยวกับหมิง</span></a>
+      <a href="#contact"><span class="t-ja">おといあわせ</span><span class="t-en">Contact</span><span class="t-th">ติดต่อ</span></a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" id="btn-ja" aria-pressed="true">日本語</button>
+      <button type="button" id="btn-en" aria-pressed="false">EN</button>
+      <button type="button" id="btn-th" aria-pressed="false">ไทย</button>
+    </div>
+  </div>
+</header>
+
+<div id="top" class="hero">
+  <div class="wrap hero-in">
+    <div>
+      <div class="tape">VFX Compositing · Bangkok</div>
+      <div class="wordmark">som<em>vfx</em>cat</div>
+      <div class="jpname">ミング<span class="en">MING</span></div>
+      <div class="role mono">Orange &amp; White Cat · オレンジと白のねこ</div>
+      <p class="lede t-ja">ミングは画面の前にすわって、<b>生のプレートを最終ショットに</b>変えるねこ。だれにも、さわられたと気づかれません。</p>
+      <p class="lede t-en">Ming sits in front of a screen and turns <b>raw plates into finished shots</b> — nobody can tell they were ever touched.</p>
+        <p class="lede t-th">หมิงนั่งอยู่หน้าจอ แล้วเปลี่ยน<b>เพลตดิบให้กลายเป็นช็อตสุดท้าย</b> ที่ไม่มีใครดูออกว่าถูกแตะมาก่อน</p>
+      <div class="cta">
+        <a class="btn btn-a" href="#contact">
+          <span class="t-ja">ショットを相談する</span><span class="t-en">Start a shot</span><span class="t-th">เริ่มคุยงาน</span>
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn-b" href="#work"><span class="t-ja">おしごとを見る</span><span class="t-en">See the work</span><span class="t-th">ดูผลงาน</span></a>
+      </div>
+    </div>
+
+    <div class="mascot">
+      <div class="paws" aria-hidden="true">
+        <i><svg viewBox="0 0 24 24"><ellipse cx="6.3" cy="9" rx="2.5" ry="3.3"/><ellipse cx="11" cy="6.4" rx="2.5" ry="3.4"/><ellipse cx="16" cy="7.4" rx="2.4" ry="3.2"/><ellipse cx="19.6" cy="11.4" rx="2.2" ry="2.8"/><path d="M12.6 12c3.4 0 6.2 2.6 6.2 5.4 0 2.2-1.9 3.4-4 3.4-1.2 0-1.6-.5-2.9-.5s-1.7.5-2.9.5c-2.1 0-4-1.2-4-3.4C5 14.6 9.2 12 12.6 12z"/></svg></i>
+        <i><svg viewBox="0 0 24 24"><ellipse cx="6.3" cy="9" rx="2.5" ry="3.3"/><ellipse cx="11" cy="6.4" rx="2.5" ry="3.4"/><ellipse cx="16" cy="7.4" rx="2.4" ry="3.2"/><ellipse cx="19.6" cy="11.4" rx="2.2" ry="2.8"/><path d="M12.6 12c3.4 0 6.2 2.6 6.2 5.4 0 2.2-1.9 3.4-4 3.4-1.2 0-1.6-.5-2.9-.5s-1.7.5-2.9.5c-2.1 0-4-1.2-4-3.4C5 14.6 9.2 12 12.6 12z"/></svg></i>
+        <i><svg viewBox="0 0 24 24"><ellipse cx="6.3" cy="9" rx="2.5" ry="3.3"/><ellipse cx="11" cy="6.4" rx="2.5" ry="3.4"/><ellipse cx="16" cy="7.4" rx="2.4" ry="3.2"/><ellipse cx="19.6" cy="11.4" rx="2.2" ry="2.8"/><path d="M12.6 12c3.4 0 6.2 2.6 6.2 5.4 0 2.2-1.9 3.4-4 3.4-1.2 0-1.6-.5-2.9-.5s-1.7.5-2.9.5c-2.1 0-4-1.2-4-3.4C5 14.6 9.2 12 12.6 12z"/></svg></i>
+        <i><svg viewBox="0 0 24 24"><ellipse cx="6.3" cy="9" rx="2.5" ry="3.3"/><ellipse cx="11" cy="6.4" rx="2.5" ry="3.4"/><ellipse cx="16" cy="7.4" rx="2.4" ry="3.2"/><ellipse cx="19.6" cy="11.4" rx="2.2" ry="2.8"/><path d="M12.6 12c3.4 0 6.2 2.6 6.2 5.4 0 2.2-1.9 3.4-4 3.4-1.2 0-1.6-.5-2.9-.5s-1.7.5-2.9.5c-2.1 0-4-1.2-4-3.4C5 14.6 9.2 12 12.6 12z"/></svg></i>
+        <i><svg viewBox="0 0 24 24"><ellipse cx="6.3" cy="9" rx="2.5" ry="3.3"/><ellipse cx="11" cy="6.4" rx="2.5" ry="3.4"/><ellipse cx="16" cy="7.4" rx="2.4" ry="3.2"/><ellipse cx="19.6" cy="11.4" rx="2.2" ry="2.8"/><path d="M12.6 12c3.4 0 6.2 2.6 6.2 5.4 0 2.2-1.9 3.4-4 3.4-1.2 0-1.6-.5-2.9-.5s-1.7.5-2.9.5c-2.1 0-4-1.2-4-3.4C5 14.6 9.2 12 12.6 12z"/></svg></i>
+      </div>
+
+      <div class="rays" aria-hidden="true"></div>
+
+      <div class="sun">
+        <span class="chip chip-1">RGBA · <b>ACEScg</b></span>
+        <span class="chip chip-2">ミング <b>v08</b></span>
+
+        <svg class="ming" viewBox="0 0 264 292" role="img" aria-label="ミング — オレンジと白のねこ / Ming, an orange and white cat">
+          <defs>
+            <radialGradient id="bellG" cx="35%" cy="30%">
+              <stop offset="0%" stop-color="#FFFFFF"/>
+              <stop offset="45%" stop-color="#DCE2E8"/>
+              <stop offset="100%" stop-color="#9FAAB5"/>
+            </radialGradient>
+          </defs>
+
+          <!-- ── tail ── -->
+          <g class="tail">
+            <path d="M192 246 C 232 252 254 224 248 192 C 244 170 224 164 216 178"
+                  fill="none" stroke="#F79A46" stroke-width="23" stroke-linecap="round"/>
+            <path d="M225 250 L231 238 M243 232 L250 240 M245 200 L254 202"
+                  stroke="#E07B2C" stroke-width="7" stroke-linecap="round" fill="none" opacity=".55"/>
+          </g>
+
+          <g class="cat-body">
+            <!-- ── body ── -->
+            <path d="M132 118 C 94 118 70 158 68 200 C 66 238 84 262 132 262 C 180 262 198 238 196 200 C 194 158 170 118 132 118 Z" fill="#F79A46"/>
+            <!-- back stripes -->
+            <path d="M84 176 C 92 172 98 172 104 175 M78 200 C 88 195 96 195 102 199 M80 224 C 90 219 98 219 104 223"
+                  stroke="#E07B2C" stroke-width="7" stroke-linecap="round" fill="none" opacity=".5"/>
+            <!-- white chest -->
+            <path d="M132 148 C 112 148 100 176 100 208 C 100 240 112 258 132 258 C 152 258 164 240 164 208 C 164 176 152 148 132 148 Z" fill="#FFFFFF"/>
+            <!-- front paws -->
+            <ellipse cx="104" cy="254" rx="21" ry="14" fill="#FFFFFF"/>
+            <ellipse cx="160" cy="254" rx="21" ry="14" fill="#FFFFFF"/>
+            <path d="M99 248 L99 256 M109 248 L109 256 M155 248 L155 256 M165 248 L165 256"
+                  stroke="#F2DCC6" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+
+            <!-- ── ears ── -->
+            <g class="ear-l">
+              <path d="M84 64 C 75 38 79 20 90 18 C 103 16 118 34 126 50 Z" fill="#F79A46"/>
+              <path d="M90 58 C 84 40 86 28 93 27 C 102 26 112 40 117 52 Z" fill="#F7B7C0"/>
+            </g>
+            <g class="ear-r">
+              <path d="M180 64 C 189 38 185 20 174 18 C 161 16 146 34 138 50 Z" fill="#F79A46"/>
+              <path d="M174 58 C 180 40 178 28 171 27 C 162 26 152 40 147 52 Z" fill="#F7B7C0"/>
+            </g>
+
+            <!-- ── head ── -->
+            <ellipse cx="132" cy="94" rx="62" ry="55" fill="#F79A46"/>
+            <!-- forehead stripes (tabby, soft) -->
+            <path d="M104 52 C 106 60 106 66 104 72 M116 44 C 118 53 118 60 116 66 M160 44 C 158 53 158 60 160 66 M172 52 C 170 60 170 66 172 72"
+                  stroke="#E07B2C" stroke-width="6" stroke-linecap="round" fill="none" opacity=".55"/>
+
+            <!-- ── white blaze + muzzle (Ming's real marking) ── -->
+            <path d="M132 40
+                     C 122 40 116 56 118 74
+                     C 111 82 106 93 106 104
+                     C 94 109 86 121 86 133
+                     C 86 150 107 161 132 161
+                     C 157 161 178 150 178 133
+                     C 178 121 170 109 158 104
+                     C 158 93 153 82 146 74
+                     C 148 56 142 40 132 40 Z" fill="#FFFFFF"/>
+
+            <!-- blush -->
+            <ellipse cx="90" cy="112" rx="13" ry="8" fill="#FF8FA0" opacity=".4"/>
+            <ellipse cx="174" cy="112" rx="13" ry="8" fill="#FF8FA0" opacity=".4"/>
+
+            <!-- ── eyes: happy squint (default) ── -->
+            <g class="eyes-shut" fill="none" stroke="#5A4232" stroke-width="5.5" stroke-linecap="round">
+              <path d="M88 96 C 95 86 105 86 112 96"/>
+              <path d="M152 96 C 159 86 169 86 176 96"/>
+            </g>
+            <!-- ── eyes: occasional peek ── -->
+            <g class="eyes-open">
+              <ellipse cx="100" cy="93" rx="12.5" ry="14.5" fill="#FFFFFF"/>
+              <ellipse cx="100" cy="93" rx="10.5" ry="12.5" fill="#B8862F"/>
+              <ellipse cx="100" cy="94" rx="5" ry="10.5" fill="#33291F"/>
+              <circle cx="96" cy="87" r="3.4" fill="#FFFFFF"/>
+              <ellipse cx="164" cy="93" rx="12.5" ry="14.5" fill="#FFFFFF"/>
+              <ellipse cx="164" cy="93" rx="10.5" ry="12.5" fill="#B8862F"/>
+              <ellipse cx="164" cy="94" rx="5" ry="10.5" fill="#33291F"/>
+              <circle cx="160" cy="87" r="3.4" fill="#FFFFFF"/>
+            </g>
+
+            <!-- ── nose + mouth ── -->
+            <path d="M120 116 C 120 111 144 111 144 116 C 144 125 136 133 132 133 C 128 133 120 125 120 116 Z" fill="#FF9AA8"/>
+            <path d="M126 119 L129 122 M138 119 L135 122" stroke="#E87C8C" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+            <g stroke="#C98F62" stroke-width="3.4" stroke-linecap="round" fill="none">
+              <path d="M132 133 L132 139"/>
+              <path d="M132 139 C 126 147 117 146 113 140"/>
+              <path d="M132 139 C 138 147 147 146 151 140"/>
+            </g>
+
+            <!-- ── whiskers ── -->
+            <g class="whisk" stroke="#E8D6C2" stroke-width="2.8" stroke-linecap="round" fill="none">
+              <path d="M88 126 C 68 120 54 119 40 122"/>
+              <path d="M88 136 C 68 137 54 141 42 146"/>
+              <path d="M176 126 C 196 120 210 119 224 122"/>
+              <path d="M176 136 C 196 137 210 141 222 146"/>
+            </g>
+
+            <!-- ── collar + bell ── -->
+            <path d="M98 154 C 112 174 152 174 166 154" stroke="#E0483D" stroke-width="12" stroke-linecap="round" fill="none"/>
+            <g class="bell-g">
+              <path d="M132 166 L132 172" stroke="#B9C3CC" stroke-width="3.4" stroke-linecap="round" fill="none"/>
+              <circle cx="132" cy="182" r="11" fill="url(#bellG)"/>
+              <path d="M122 184 H142" stroke="#7E8B96" stroke-width="2.2" fill="none"/>
+              <circle cx="132" cy="188" r="2.4" fill="#7E8B96"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+
+      <div class="vrail">オレンジと白のねこ、ミング</div>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="wrap stats-in">
+      <div><div class="n mono">184</div><div class="l"><span class="t-ja">納品ショット数</span><span class="t-en">Shots delivered</span><span class="t-th">ช็อตที่ส่งแล้ว</span></div></div>
+      <div><div class="n mono">26,400<i>f</i></div><div class="l"><span class="t-ja">合成フレーム数</span><span class="t-en">Frames comped</span><span class="t-th">เฟรมที่คอมพ์</span></div></div>
+      <div><div class="n mono">7<i>yrs</i></div><div class="l"><span class="t-ja">経験年数</span><span class="t-en">Years of experience</span><span class="t-th">ปีประสบการณ์</span></div></div>
+      <div><div class="n mono">100<i>%</i></div><div class="l"><span class="t-ja">納期遵守率</span><span class="t-en">On schedule</span><span class="t-th">ส่งตรงเวลา</span></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section id="service">
+    <div class="head">
+      <h2><span class="t-ja">ミングができること</span><span class="t-en">What Ming does</span><span class="t-th">สิ่งที่หมิงทำ</span></h2>
+      <div class="h-sub"><span class="t-ja">Service</span><span class="t-en">できること</span><span class="t-th">บริการ</span></div>
+      <p class="sub t-ja">ショット単位でも、シーケンス単位でも、いそがしい時期のチーム参加でも。やりとりはフレーム番号で、納品は EXR / DPX で。</p>
+      <p class="sub t-en">Per shot, per sequence, or dropping into your team through a crunch. Notes in frame numbers, files as EXR or DPX.</p>
+        <p class="sub t-th">รับเป็นช็อต เป็นซีเควนซ์ หรือเข้าเสริมทีมช่วงงานแน่น คุยงานด้วยเลขเฟรม ส่งไฟล์เป็น EXR หรือ DPX</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="13" height="13" rx="3"/><rect x="8" y="8" width="13" height="13" rx="3"/></svg></div>
+        <h3><span class="t-ja">コンポジット</span><span class="t-en">Compositing</span><span class="t-th">คอมโพสิต</span></h3>
+        <div class="h-sub"><span class="t-ja">Compositing</span><span class="t-en">コンポジット</span><span class="t-th">คอมโพสิต</span></div>
+        <p class="t-ja">プレート・CG・エフェクトをひとつの光にまとめます。エッジ、グレイン、黒レベルを整えて、つなぎ目を消します。</p>
+        <p class="t-en">Plates, CG and effects brought under one light. Edges, grain and black levels handled so the join disappears.</p>
+        <p class="t-th">รวมเพลต CG และเอฟเฟกต์ให้อยู่ใต้แสงเดียวกัน คุมขอบ เกรน และระดับดำ จนรอยต่อหายไป</p>
+        <div class="tags"><span>Nuke</span><span>After Effects</span><span>Fusion</span></div>
+      </div>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 20s2-8 8-12 8-4 8-4-1 5-4 9-8 7-12 7z"/><path d="M4 20l4-4"/></svg></div>
+        <h3><span class="t-ja">ロト &amp; ペイント</span><span class="t-en">Roto &amp; Paint</span><span class="t-th">โรโต้ &amp; เพ้นท์</span></h3>
+        <div class="h-sub"><span class="t-ja">Roto &amp; Paint</span><span class="t-en">ロト＆ペイント</span><span class="t-th">โรโต้ &amp; เพ้นท์</span></div>
+        <p class="t-ja">髪・煙・速い動きのマット抜き。ワイヤーやマーカーなど、映ってはいけないものを消します。</p>
+        <p class="t-en">Mattes for hair, smoke and fast motion. Rigs, markers and anything that shouldn't be in frame painted out.</p>
+        <p class="t-th">ตัดแมตต์เส้นผม ควัน และการเคลื่อนไหวเร็ว ลบสลิง มาร์กเกอร์ และของที่ไม่ควรอยู่ในเฟรม</p>
+        <div class="tags"><span>Silhouette</span><span>Mocha</span><span>Nuke</span></div>
+      </div>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="2"/></svg></div>
+        <h3><span class="t-ja">マッチムーブ</span><span class="t-en">Matchmove</span><span class="t-th">แมตช์มูฟ</span></h3>
+        <div class="h-sub"><span class="t-ja">Matchmove &amp; Tracking</span><span class="t-en">マッチムーブ＆トラッキング</span><span class="t-th">แมตช์มูฟ &amp; แทร็กกิ้ง</span></div>
+        <p class="t-ja">カメラをソルブして、CG を実際の地面に固定します。参照シーンもつけるので、3D チームがその日のうちに引き継げます。</p>
+        <p class="t-en">Camera solved, CG stuck to real ground. You get the solve plus a reference scene the 3D team can pick up the same day.</p>
+        <p class="t-th">solve กล้องให้ CG ติดพื้นจริง ส่งกล้องพร้อมฉากอ้างอิง ให้ทีม 3D รับช่วงต่อได้ในวันเดียวกัน</p>
+        <div class="tags"><span>3DEqualizer</span><span>SynthEyes</span><span>Maya</span></div>
+      </div>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2z"/></svg></div>
+        <h3><span class="t-ja">クリーンアップ</span><span class="t-en">Cleanup &amp; Beauty</span><span class="t-th">คลีนอัพ &amp; บิวตี้</span></h3>
+        <div class="h-sub"><span class="t-ja">Cleanup &amp; Beauty</span><span class="t-en">クリーンアップ＆ビューティー</span><span class="t-th">คลีนอัพ &amp; บิวตี้</span></div>
+        <p class="t-ja">肌や背景を整えつつ、本来の質感は残します。プラスチックのようにはしません。</p>
+        <p class="t-en">Skin and backgrounds tidied while the real texture stays. Nothing turns to plastic.</p>
+        <p class="t-th">เก็บผิวและฉากหลังให้สะอาด โดยยังเหลือพื้นผิวจริงไว้ ไม่ทำให้ภาพกลายเป็นพลาสติก</p>
+        <div class="tags"><span>Nuke</span><span>Mistika</span><span>DaVinci</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true">
+    <svg viewBox="0 0 24 24"><ellipse cx="6.3" cy="9" rx="2.5" ry="3.3"/><ellipse cx="11" cy="6.4" rx="2.5" ry="3.4"/><ellipse cx="16" cy="7.4" rx="2.4" ry="3.2"/><ellipse cx="19.6" cy="11.4" rx="2.2" ry="2.8"/><path d="M12.6 12c3.4 0 6.2 2.6 6.2 5.4 0 2.2-1.9 3.4-4 3.4-1.2 0-1.6-.5-2.9-.5s-1.7.5-2.9.5c-2.1 0-4-1.2-4-3.4C5 14.6 9.2 12 12.6 12z"/></svg>
+    <svg viewBox="0 0 24 24"><ellipse cx="6.3" cy="9" rx="2.5" ry="3.3"/><ellipse cx="11" cy="6.4" rx="2.5" ry="3.4"/><ellipse cx="16" cy="7.4" rx="2.4" ry="3.2"/><ellipse cx="19.6" cy="11.4" rx="2.2" ry="2.8"/><path d="M12.6 12c3.4 0 6.2 2.6 6.2 5.4 0 2.2-1.9 3.4-4 3.4-1.2 0-1.6-.5-2.9-.5s-1.7.5-2.9.5c-2.1 0-4-1.2-4-3.4C5 14.6 9.2 12 12.6 12z"/></svg>
+    <svg viewBox="0 0 24 24"><ellipse cx="6.3" cy="9" rx="2.5" ry="3.3"/><ellipse cx="11" cy="6.4" rx="2.5" ry="3.4"/><ellipse cx="16" cy="7.4" rx="2.4" ry="3.2"/><ellipse cx="19.6" cy="11.4" rx="2.2" ry="2.8"/><path d="M12.6 12c3.4 0 6.2 2.6 6.2 5.4 0 2.2-1.9 3.4-4 3.4-1.2 0-1.6-.5-2.9-.5s-1.7.5-2.9.5c-2.1 0-4-1.2-4-3.4C5 14.6 9.2 12 12.6 12z"/></svg>
+    <svg viewBox="0 0 24 24"><ellipse cx="6.3" cy="9" rx="2.5" ry="3.3"/><ellipse cx="11" cy="6.4" rx="2.5" ry="3.4"/><ellipse cx="16" cy="7.4" rx="2.4" ry="3.2"/><ellipse cx="19.6" cy="11.4" rx="2.2" ry="2.8"/><path d="M12.6 12c3.4 0 6.2 2.6 6.2 5.4 0 2.2-1.9 3.4-4 3.4-1.2 0-1.6-.5-2.9-.5s-1.7.5-2.9.5c-2.1 0-4-1.2-4-3.4C5 14.6 9.2 12 12.6 12z"/></svg>
+    <svg viewBox="0 0 24 24"><ellipse cx="6.3" cy="9" rx="2.5" ry="3.3"/><ellipse cx="11" cy="6.4" rx="2.5" ry="3.4"/><ellipse cx="16" cy="7.4" rx="2.4" ry="3.2"/><ellipse cx="19.6" cy="11.4" rx="2.2" ry="2.8"/><path d="M12.6 12c3.4 0 6.2 2.6 6.2 5.4 0 2.2-1.9 3.4-4 3.4-1.2 0-1.6-.5-2.9-.5s-1.7.5-2.9.5c-2.1 0-4-1.2-4-3.4C5 14.6 9.2 12 12.6 12z"/></svg>
+  </div>
+
+  <section id="work">
+    <div class="head">
+      <h2><span class="t-ja">おしごと</span><span class="t-en">Selected work</span><span class="t-th">ผลงานที่เลือกมา</span></h2>
+      <div class="h-sub"><span class="t-ja">Selected work</span><span class="t-en">おしごと</span><span class="t-th">ผลงาน</span></div>
+      <p class="sub t-ja">進め方が一番つたわる 4 ショット。下の画像はまだ仮のスレートなので、実際のスチルにいつでも差し替えられます。</p>
+      <p class="sub t-en">Four shots that explain the working method best. Frames below are placeholder slates — swap in real stills any time.</p>
+        <p class="sub t-th">สี่ช็อตที่เล่าวิธีทำงานได้ครบที่สุด ภาพด้านล่างยังเป็นสเลทเปล่า เปลี่ยนเป็นภาพจริงได้ตลอด</p>
+    </div>
+    <div class="shots">
+      <article class="shot">
+        <div class="frame f1"><span class="slate">SH_0120 · PLATE A</span></div>
+        <div class="shot-body">
+          <h3><span class="t-ja">深夜3時、雨の街</span><span class="t-en">Rain downtown, 3 AM</span><span class="t-th">ฝนกลางเมือง ตีสาม</span></h3>
+          <div class="h-sub"><span class="t-ja">Rain downtown, 3 AM</span><span class="t-en">深夜3時、雨の街</span><span class="t-th">ฝนกลางเมือง ตีสาม</span></div>
+          <span class="tag">Comp · Cleanup</span>
+          <dl><dt>FRAMES</dt><dd>1001–1096</dd><dt>RES</dt><dd>2048 × 858</dd><dt>SPACE</dt><dd>ACEScg</dd></dl>
+        </div>
+      </article>
+      <article class="shot">
+        <div class="frame f2"><span class="slate">SH_0244 · PLATE B</span></div>
+        <div class="shot-body">
+          <h3><span class="t-ja">夕暮れの森</span><span class="t-en">Forest at dusk</span><span class="t-th">ป่ายามพลบ</span></h3>
+          <div class="h-sub"><span class="t-ja">Forest at dusk</span><span class="t-en">夕暮れの森</span><span class="t-th">ป่ายามพลบ</span></div>
+          <span class="tag">Roto · Matchmove</span>
+          <dl><dt>FRAMES</dt><dd>1001–1188</dd><dt>RES</dt><dd>3840 × 2160</dd><dt>SPACE</dt><dd>ACEScg</dd></dl>
+        </div>
+      </article>
+      <article class="shot">
+        <div class="frame f3"><span class="slate">SH_0367 · PLATE A</span></div>
+        <div class="shot-body">
+          <h3><span class="t-ja">夕方の市場、光とほこり</span><span class="t-en">Evening market, light and dust</span><span class="t-th">ตลาดเย็น แสงกับฝุ่น</span></h3>
+          <div class="h-sub"><span class="t-ja">Evening market</span><span class="t-en">夕方の市場</span><span class="t-th">ตลาดเย็น</span></div>
+          <span class="tag">Comp · Beauty</span>
+          <dl><dt>FRAMES</dt><dd>1001–1054</dd><dt>RES</dt><dd>2048 × 1152</dd><dt>SPACE</dt><dd>Rec.709</dd></dl>
+        </div>
+      </article>
+      <article class="shot">
+        <div class="frame f4"><span class="slate">SH_0481 · PLATE C</span></div>
+        <div class="shot-body">
+          <h3><span class="t-ja">朝の海、船を消す</span><span class="t-en">Morning sea, boat removed</span><span class="t-th">ทะเลเช้า ลบเรือออก</span></h3>
+          <div class="h-sub"><span class="t-ja">Morning sea</span><span class="t-en">朝の海</span><span class="t-th">ทะเลเช้า</span></div>
+          <span class="tag">Paint · Cleanup</span>
+          <dl><dt>FRAMES</dt><dd>1001–1132</dd><dt>RES</dt><dd>4096 × 1716</dd><dt>SPACE</dt><dd>ACEScg</dd></dl>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="day">
+    <div class="head">
+      <h2><span class="t-ja">ミングのいちにち</span><span class="t-en">Ming's day</span><span class="t-th">หนึ่งวันของหมิง</span></h2>
+      <div class="h-sub"><span class="t-ja">A day with Ming</span><span class="t-en">ミングのいちにち</span><span class="t-th">หนึ่งวันของหมิง</span></div>
+    </div>
+    <div class="day">
+      <div class="hour"><div class="t mono">07:00</div><div class="e">🌅</div><div class="d"><span class="t-ja">おきる</span><span class="t-en">Wake up</span><span class="t-th">ตื่นนอน</span></div></div>
+      <div class="hour"><div class="t mono">10:00</div><div class="e">🖥️</div><div class="d"><span class="t-ja">コンポジット</span><span class="t-en">Comping</span><span class="t-th">คอมพ์งาน</span></div></div>
+      <div class="hour"><div class="t mono">13:00</div><div class="e">☀️</div><div class="d"><span class="t-ja">ひなたぼっこ</span><span class="t-en">Sunbathing</span><span class="t-th">นอนอาบแดด</span></div></div>
+      <div class="hour"><div class="t mono">16:00</div><div class="e">🎞️</div><div class="d"><span class="t-ja">レンダリング</span><span class="t-en">Rendering</span><span class="t-th">เรนเดอร์</span></div></div>
+      <div class="hour"><div class="t mono">22:00</div><div class="e">📦</div><div class="d"><span class="t-ja">納品</span><span class="t-en">Delivery</span><span class="t-th">ส่งงาน</span></div></div>
+    </div>
+  </section>
+
+  <section id="pipeline">
+    <div class="head">
+      <h2><span class="t-ja">しごとのながれ</span><span class="t-en">Pipeline</span><span class="t-th">ขั้นตอนงาน</span></h2>
+      <div class="h-sub"><span class="t-ja">Pipeline</span><span class="t-en">しごとのながれ</span><span class="t-th">ขั้นตอนงาน</span></div>
+      <p class="sub t-ja">どのショットも同じ 6 ステップを通ります。ステップ 2 から確認できるので、最後まで待つ必要はありません。</p>
+      <p class="sub t-en">Every shot walks the same six steps. You see work from step two — no waiting until the end.</p>
+        <p class="sub t-th">ทุกช็อตเดินผ่านหกขั้นเหมือนกันหมด เห็นงานได้ตั้งแต่ขั้นที่สอง ไม่ต้องรอจนจบ</p>
+    </div>
+    <div class="pipe">
+      <div class="step"><div class="no mono">1</div><b>PLATE</b><div class="s-sub"><span class="t-ja">プレート受領</span><span class="t-en">Plate in</span><span class="t-th">รับเพลต</span></div><span class="d"><span class="t-ja">素材を受け取り、メタデータとカラースペースを確認。</span><span class="t-en">Footage in, metadata and colorspace checked.</span><span class="t-th">รับฟุตเทจ เช็กเมทาดาต้าและคัลเลอร์สเปซ</span></span></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="no mono">2</div><b>ROTO</b><div class="s-sub"><span class="t-ja">ロト</span><span class="t-en">Roto</span><span class="t-th">โรโต้</span></div><span class="d"><span class="t-ja">マットを抜き、レイヤーを分けて、最初のプレビューを送ります。</span><span class="t-en">Mattes cut, layers split, first preview out.</span><span class="t-th">ตัดแมตต์ แยกเลเยอร์ ส่งพรีวิวรอบแรก</span></span></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="no mono">3</div><b>TRACK</b><div class="s-sub"><span class="t-ja">トラッキング</span><span class="t-en">Track</span><span class="t-th">แทร็ก</span></div><span class="d"><span class="t-ja">カメラをソルブして、シーンの基準を置きます。</span><span class="t-en">Camera solved, scene reference placed.</span><span class="t-th">solve กล้อง วางจุดอ้างอิงในฉาก</span></span></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="no mono">4</div><b>COMP</b><div class="s-sub"><span class="t-ja">コンポジット</span><span class="t-en">Comp</span><span class="t-th">คอมพ์</span></div><span class="d"><span class="t-ja">光・エッジ・グレインを合わせて組み上げます。</span><span class="t-en">Assembled — light, edges and grain matched.</span><span class="t-th">ประกอบภาพ คุมแสง ขอบ และเกรน</span></span></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="no mono">5</div><b>GRADE</b><div class="s-sub"><span class="t-ja">グレーディング</span><span class="t-en">Grade</span><span class="t-th">เกรดสี</span></div><span class="d"><span class="t-ja">納品先のカラースペースで最終確認。</span><span class="t-en">Checked in the delivery colorspace.</span><span class="t-th">ตรวจในคัลเลอร์สเปซปลายทาง</span></span></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="no mono">6</div><b>DELIVER</b><div class="s-sub"><span class="t-ja">納品</span><span class="t-en">Deliver</span><span class="t-th">ส่งมอบ</span></div><span class="d"><span class="t-ja">全フレームの EXR とプロジェクトファイルをお渡しします。</span><span class="t-en">Full-range EXR plus the project files.</span><span class="t-th">ส่ง EXR ครบเฟรม พร้อมไฟล์โปรเจกต์</span></span></div>
+    </div>
+  </section>
+
+
+  <section id="story">
+    <div class="head">
+      <h2><span class="t-ja">ミングのおはなし</span><span class="t-en">Ming's story</span><span class="t-th">เรื่องของหมิง</span></h2>
+      <div class="h-sub"><span class="t-ja">Before we met</span><span class="t-en">出会うまえの話</span><span class="t-th">ก่อนจะมาเจอกัน</span></div>
+      <p class="sub t-ja">ミングがここに来るまでに、いくつもの家と、いくつもの「ちがった」があります。</p>
+      <p class="sub t-en">Ming passed through a lot of houses, and a lot of near-misses, before he got here.</p>
+      <p class="sub t-th">กว่าหมิงจะมาถึงตรงนี้ ผ่านมาหลายบ้าน และผ่านการพลาดกันมาหลายครั้ง</p>
+    </div>
+
+    <div class="origin">
+      <span class="from">ส้ม</span>
+      <span class="arr">→</span>
+      <span class="to">ミング</span>
+      <span class="why">
+        <span class="t-ja">最初の名前は「ソム」。<b>somvfxcat</b> の “som” は、そこから来ています。</span>
+        <span class="t-en">His first name was Som. The “som” in <b>somvfxcat</b> comes from there.</span>
+        <span class="t-th">ชื่อแรกของเขาคือ “ส้ม” — คำว่า “som” ใน <b>somvfxcat</b> มาจากตรงนั้น</span>
+      </span>
+    </div>
+
+    <div class="story">
+        <div class="chap">
+          <div class="no mono">CHAPTER 01</div>
+          <h3><span class="t-ja">ソム</span><span class="t-en">Som</span><span class="t-th">ส้ม</span></h3>
+          <p class="t-ja">ミングになる前、彼の名前は「ソム」——タイ語で“オレンジ”。年を重ね、体にもいくつか問題を抱えた、のらねこでした。</p>
+          <p class="t-en">Before he was Ming, his name was Som — Thai for “orange.” A stray, already getting on in years, already carrying a few health problems.</p>
+          <p class="t-th">ก่อนจะชื่อหมิง เขาชื่อ “ส้ม” แมวจรที่มีอายุอานามและปัญหาสุขภาพมาประมาณนึงแล้ว</p>
+        </div>
+        <div class="chap">
+          <div class="no mono">CHAPTER 02</div>
+          <h3><span class="t-ja">いくつもの家を</span><span class="t-en">Several homes</span><span class="t-th">ผ่านมาหลายบ้าน</span></h3>
+          <p class="t-ja">何軒もの家を渡り歩きました。甘えん坊で、なかなかのいたずら者。だからこそ、たくさんの人が彼に落ちたのでしょう。</p>
+          <p class="t-en">He passed through several homes. Clingy, and a proper little troublemaker — which is probably exactly why so many people fell for him.</p>
+          <p class="t-th">เคยมีคนเลี้ยงมาหลายบ้าน คงเพราะเป็นแมวขี้อ้อนและแสบน่าดู ถึงตกนุดได้หลายคน</p>
+        </div>
+        <div class="chap">
+          <div class="no mono">CHAPTER 03</div>
+          <h3><span class="t-ja">フランスさん</span><span class="t-en">Khun France</span><span class="t-th">คุณฟร้านซ์</span></h3>
+          <p class="t-ja">猫を愛する外国人、フランスさんと、のらねこを助けるプロジェクトに救われました。その日に何があったのか、正確なところは誰も知りません。</p>
+          <p class="t-en">He was rescued through Khun France — a foreigner who loves cats — and a project caring for strays. Nobody knows exactly what happened that day.</p>
+          <p class="t-th">ได้รับการช่วยเหลือผ่านคุณฟร้านซ์ ฝรั่งรักแมว จากโครงการรักษ์แมวปันน้ำใจให้แมวจร ไม่มีใครรู้เหตุการณ์วันนั้นแบบเป๊ะ ๆ</p>
+        </div>
+        <div class="chap">
+          <div class="no mono">CHAPTER 04</div>
+          <h3><span class="t-ja">里親会</span><span class="t-en">Adoption events</span><span class="t-th">งานหาบ้าน</span></h3>
+          <p class="t-ja">里親会に何度も参加しました。それでも、誰も彼を連れて帰りませんでした。</p>
+          <p class="t-en">Event after event, looking for a home. Nobody took him.</p>
+          <p class="t-th">ออกงานหาบ้านตามอีเว้นท์ครั้งแล้วครั้งเล่า แต่ก็ยังหาบ้านไม่ได้</p>
+        </div>
+        <div class="chap">
+          <div class="no mono">CHAPTER 05</div>
+          <h3><span class="t-ja">Cat Expo</span><span class="t-en">Cat Expo</span><span class="t-th">Cat Expo</span></h3>
+          <p class="t-ja">その日は、猫を飼うつもりなんてありませんでした——ミングに会うまでは。ひと目で決まり。でもスタッフの返事は「もう引き取り手が決まりました」。</p>
+          <p class="t-en">We weren't there to adopt a cat. Then we met Ming. That was that — except the staff said someone had already taken him.</p>
+          <p class="t-th">วันนั้นไม่ได้ตั้งใจจะเลี้ยงแมว จนไปเจอกับหมิง ถูกชะตา ปิ๊ง ๆ ตัดสินใจจะพาไปอยู่ด้วย แต่พี่โครงการบอกว่า มีคนมารับหมิงไปแล้ว</p>
+        </div>
+        <div class="chap">
+          <div class="no mono">CHAPTER 06</div>
+          <h3><span class="t-ja">数日後の電話</span><span class="t-en">The call</span><span class="t-th">ไม่กี่วันต่อมา</span></h3>
+          <p class="t-ja">数日後、同じスタッフから連絡が来ました。「あの方がミングを返しに来ました。まだ引き取る気があるなら、クリニックまで来てください」</p>
+          <p class="t-en">A few days later, the same staff member got in touch: the man had brought Ming back. If we still wanted him, we could collect him from the clinic.</p>
+          <p class="t-th">ไม่กี่วันต่อมา พี่คนเดิมติดต่อมา ว่าพี่ผู้ชายคนที่รับหมิงไป เอาหมิงมาคืน ถ้ายังอยากดูแลหมิง มารับจากที่คลินิกได้เลย</p>
+        </div>
+        <div class="chap">
+          <div class="no mono">CHAPTER 07</div>
+          <h3><span class="t-ja">迎えた日</span><span class="t-en">Pickup day</span><span class="t-th">วันไปรับ</span></h3>
+          <p class="t-ja">本当に同じねこ？ケージから、堂々と歩いて出てきました。まだ痩せていたけれど、目つきは鷹のよう。家に着くと、さっそくいろんな“特技”を披露してくれました。</p>
+          <p class="t-en">Same cat? He strolled out of that cage like he owned it. Still skinny — but with the eyes of a hawk. Back home, he started showing off his many talents right away.</p>
+          <p class="t-th">เฮ้ย นี่มันตัวเดียวกันหรือเปล่า หมิงดูซ่า เดินออกจากกรงแบบเก๋าเว้ย ตัวยังผอม ๆ แต่ตาเหยี่ยวมากแม่ พอกลับถึงบ้าน หมิงก็โชว์ความสามารถหลายอย่าง</p>
+        </div>
+        <div class="chap now">
+          <div class="no mono">CHAPTER 08</div>
+          <h3><span class="t-ja">11年</span><span class="t-en">Eleven years</span><span class="t-th">11 ปี</span></h3>
+          <p class="t-ja">食べ物にも寝床にもこだわらない子だったのに、年ごとに“要求”が増えていきました。いま、いっしょに11年。すっかり年長者で、毎日は年上の親戚を介護しているようです。そして毎日、いい思い出を集めています——今日の分も。</p>
+          <p class="t-en">He started out easy — easy to feed, easy to please — and got more particular every year. Eleven years together now. He's properly old, and the days feel like caring for an elderly relative. Every one of them goes into the good memories — today included.</p>
+          <p class="t-th">จากหมิงที่กินง่าย อยู่ง่าย ก็พัฒนาความเยอะขึ้นไปแต่ละปี ตอนนี้อยู่ด้วยกันมา 11 ปี หมิงชราขึ้นเยอะ เหมือนดูแลญาติผู้ใหญ่ ทุก ๆ วันก็เก็บความทรงจำดี ๆ เอาไว้ รวมถึงวันนี้ด้วย</p>
+        </div>
+      <div class="promise">
+        <span class="heart">❤️</span>
+        <p>
+          <span class="t-ja">そしていつか、ミングが疲れて休みたくなった日には、キックがそばにいます。最後の日まで、ずっと。</span>
+          <span class="t-en">And on the day Ming is tired and wants to rest, Kik will be right beside him — all the way to the end.</span>
+          <span class="t-th">และหากวันไหนหมิงเหนื่อยแล้ว อยากพักผ่อน พี่กิ๊กก็จะดูแลอยู่ข้าง ๆ ไปจนถึงช่วงสุดท้ายของหมิงเลยนะ</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="head">
+      <h2><span class="t-ja">ミングについて</span><span class="t-en">About Ming</span><span class="t-th">เกี่ยวกับหมิง</span></h2>
+      <div class="h-sub"><span class="t-ja">About Ming</span><span class="t-en">ミングについて</span><span class="t-th">เกี่ยวกับหมิง</span></div>
+    </div>
+    <div class="about">
+      <div>
+        <p class="t-ja">ミングはオレンジと白のねこです。伝説も変身もありません。ただ画面の前にすわって、生のプレートを、だれにも触られたと気づかれない最終ショットに変えるねこです。</p>
+        <p class="t-en">Ming is an orange-and-white cat. No legend, no transformation — just a cat who sits in front of a screen and turns raw plates into finished shots nobody can tell were ever touched.</p>
+        <p class="t-th">หมิงเป็นแมวส้มขาว ไม่มีตำนาน ไม่มีการแปลงร่าง เป็นแค่แมวที่นั่งอยู่หน้าจอ แล้วเปลี่ยนเพลตดิบให้กลายเป็นช็อตสุดท้ายที่ไม่มีใครดูออกว่าถูกแตะมาก่อน</p>
+        <p class="t-ja">良いコンポジットは、観客が気づかない仕事です。だからここでは派手さでは測りません。硬くならないエッジ、合っているグレイン、シーケンス全体でぶれないマット——測るのはそれだけです。</p>
+        <p class="t-en">Good compositing is work the audience never notices. So nothing here is measured by spectacle. It's measured by edges that don't go hard, grain that matches, and mattes that hold steady across the whole sequence.</p>
+        <p class="t-th">งานคอมโพสิตที่ดีคืองานที่คนดูมองไม่เห็น เกณฑ์วัดผลที่นี่จึงไม่ใช่ความอลังการ แต่คือขอบที่ไม่แข็ง เกรนที่เข้ากัน และแมตต์ที่ไม่สั่นตลอดทั้งซีเควนซ์</p>
+        <div class="pull">
+          <span class="t-ja">継ぎ目がなくなるまで、1フレームずつ。それから納品します。</span>
+          <span class="t-en">Frame by frame until it's seamless, then it ships.</span><span class="t-th">ทำทีละเฟรมจนกว่าจะเนียน แล้วค่อยส่ง</span>
+        </div>
+      </div>
+      <div class="facts">
+        <div><span class="k">Based</span><span class="v">Bangkok<small><span class="t-ja">バンコク · ICT</span><span class="t-en">ICT · UTC+7</span><span class="t-th">กรุงเทพฯ · ICT</span></small></span></div>
+        <div><span class="k">Language</span><span class="v">English · 日本語<small>ไทย</small></span></div>
+        <div><span class="k">Work</span><span class="v"><span class="t-ja">リモート・フリーランス</span><span class="t-en">Remote freelance</span><span class="t-th">ฟรีแลนซ์ รีโมท</span></span></div>
+        <div><span class="k">Together</span><span class="v">11 <span class="t-ja">年</span><span class="t-en">years</span><span class="t-th">ปี</span><small><span class="t-ja">ミングと</span><span class="t-en">with Ming</span><span class="t-th">กับหมิง</span></small></span></div>
+        <div><span class="k">Delivery</span><span class="v">EXR · DPX · ProRes</span></div>
+        <div><span class="k">Status</span><span class="v"><span class="t-ja">受付中 🐾</span><span class="t-en">Open for shots 🐾</span><span class="t-th">เปิดรับงาน 🐾</span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact">
+      <h2><span class="t-ja">直したいショット、ありますか？</span><span class="t-en">Got a shot to fix?</span><span class="t-th">มีช็อตที่ต้องเก็บไหม</span></h2>
+      <div class="h-sub"><span class="t-ja">Contact</span><span class="t-en">おといあわせ</span><span class="t-th">ติดต่อ</span></div>
+      <p class="t-ja">プレート、尺、納期をお送りください。1営業日以内に見積もりと空き状況をお返しします。</p>
+      <p class="t-en">Send the plate, the length and the deadline. You'll get a quote and an open slot back within one business day.</p>
+        <p class="t-th">ส่งเพลต ความยาว และเดดไลน์มา จะตอบกลับพร้อมราคาและคิวว่างภายในหนึ่งวันทำการ</p>
+      <div class="cta">
+        <a class="btn btn-a" href="#contact">hello@somvfxcat.com<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-b" href="#contact"><span class="t-ja">リールを見る</span><span class="t-en">Download reel</span><span class="t-th">ดูรีล</span></a>
+      </div>
+      <div class="note"><span class="t-ja">メールアドレスは仮です。本物を教えてくれたら差し替えます。</span><span class="t-en">Placeholder address — send the real one and it gets swapped in.</span><span class="t-th">อีเมลนี้เป็นตัวอย่าง บอกอันจริงมาแล้วจะเปลี่ยนให้</span></div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap foot-in">
+    <span>© 2026 somvfxcat · ミング</span>
+    <span>BANGKOK · 24 FPS · ACEScg</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root = document.documentElement,
+      btns = { ja: document.getElementById('btn-ja'),
+               en: document.getElementById('btn-en'),
+               th: document.getElementById('btn-th') };
+
+  function setLang(l){
+    root.setAttribute('data-lang', l);
+    Object.keys(btns).forEach(function(k){
+      btns[k].setAttribute('aria-pressed', String(k === l));
+    });
+    try { localStorage.setItem('mingLang', l); } catch (e) {}
+  }
+  try {
+    var saved = localStorage.getItem('mingLang');
+    if (btns[saved]) setLang(saved);
+  } catch (e) {}
+
+  Object.keys(btns).forEach(function(k){
+    btns[k].addEventListener('click', function(){ setLang(k); });
+  });
+})();
+</script>
+</body>
+</html>
